@@ -1,0 +1,14 @@
+{
+	"bus":{
+			"name": "buName",
+			"role": "buRole"
+		},
+	"accounts":{
+			"name": "accountName",
+			"role": "accountRole"
+		},
+	"projects":{
+		"name": "projectName",
+		"role": "projectRole"
+	}
+}

@@ -1,0 +1,109 @@
+<div class="col-md-3 left_col" ng-if="isSwa">
+  <div class="left_col scroll-view">
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+      <div class="menu_section">
+        <ul class="nav side-menu">
+          <li>
+            <a id="menu_toggle">
+              <i class="font28 fa fa-bars"></i>
+            </a>
+          </li>
+          <div class="nav_lft_vig" style="overflow-y: auto; overflow-x: hidden;">
+            <ul class="nav nav-list">
+              <li>
+                <label class="tree-toggler nav-header" ng-class="master == 'administrator' ? 'custom-sidebar-select' : 'custom-normal-select'">
+                    <i class="menu_toggle"></i>
+                    {{translate('administration')}} 
+                    <span class="fa fa-chevron-down"></span>
+                </label>
+                <ul class="nav nav-list tree" ng-class="master == 'administrator' ? 'show' : ''">
+                    <li>
+                      <label class="tree-toggler nav-header custom-customer-select">servicewire
+                        <span class="fa fa-chevron-down"></span>
+                      </label>
+                      <ul class="nav nav-list tree show">
+                        <li ng-class="service == 'users' ? 'custom-service-select' : ''">
+                          <a ui-sref="swaListView({service: 'users'})">{{translate('users')}}</a>
+                        </li>
+                        <li ng-class="service == 'customers' ? 'custom-service-select' : ''">
+                          <a ui-sref="swaListView({service: 'customers'})">{{translate('customers')}}</a>
+                        </li>
+                      </ul>
+                    </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <!-- /sidebar menu -->
+  </div>
+</div>
+
+<div ng-if="!isSwa" ng-include="'static/new/partials/sidebar.html'"></div>
+<div class="right_col pdnlft0" role="main">
+  <div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="x_panel pdntop0" ng-if="service !== 'users'">
+          <div class="x_title" ng-hide="isSwa">
+            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> / <a ui-sref="listView({customerName: customerName, service: service})">{{translate(service)}}</a>
+            / {{tagName}}
+            </h2>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_title" ng-show="isSwa">
+            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> / <a ui-sref="swaListView({customerName: customerName, service: service})">{{translate(service)}}</a>
+            / {{tagName}}
+            </h2>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content pdn-top10">
+            <table class="table table-responsive">
+              <thead>
+              	<tr class="table_filter">
+                  <th></th>
+                  <th ng-repeat="columnKey in tagFormat['users'] | keys" ng-init="columnData = tagFormat['users'][columnKey]">
+                  	<input ng-if="columnData.type == 'text'" ng-model="search[columnData.key]" class="form-control" type="text" placeholder="Start Typing" ng-change="getFilteredUsers()">
+                  	<select ng-if="columnData.type == 'select'" ng-model="search[columnData.key]" class="form-control" ng-change="getFilteredUsers()">
+                  		<option ng-selected="true" value="">Select a value</option>
+                      <option ng-repeat="option in columnData.options" ng-value="option.value">{{option.displayName}}</option>
+                  	</select>
+                	</th>
+                  <th>
+                    <select ng-model="newRole" ng-init="newRole = role" class="form-control" ng-change="getFilteredUsers(newRole)" ng-options="option.value as option.name for option in options">
+                      <!-- <option ng-selected="true" value="{{role}}">Tagged</option>
+                      <option value="!{{role}}">UnTagged</option> -->
+                    </select>
+                  </th>
+              	</tr>
+                <tr class="table_content">
+                  <th ng-click="toggleAll()"><input type="checkbox" ng-model="allSelected" ng-checked="isChecked()"></th>
+                  <th ng-repeat="columnKey in tagFormat['users'] | keys" ng-init="columnData = tagFormat['users'][columnKey]">{{columnData.displayName}}</th>
+                  <th>Tagged/Untagged</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-ng-repeat="user in filteredUsers" ng-click="toggle(user.uid)">
+                  <td><input type="checkbox" data-ng-model="checkboxModel[user.uid]" ng-value="user.uid" ng-checked="exists(user.uid)"></td>
+                  <td ng-repeat="columnKey in tagFormat['users'] | keys">{{user[columnKey]}}</td>
+                  <td>{{newRole == role ? 'Tagged' : 'Untagged'}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="pull-right">
+              <button class="btn btn-primary btn-custom" ng-disabled="newRole == role" ng-click="tag()">Tag</button>
+              <button class="btn untag-btn btn-custom" ng-disabled="newRole == '!'+role" ng-click="untag()">Untag</button>
+            </div>
+          </div>
+        </div>
+        <div ng-if="service === 'users'" ng-include="'static/new/partials/tag/serviceTag.html'"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /page content -->

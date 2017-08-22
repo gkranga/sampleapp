@@ -1,0 +1,23 @@
+angular.module('swire').config(function($stateProvider,$httpProvider,$locationProvider){
+    $stateProvider.state('displayRegionCardView',{
+      url:'/displayRegion',
+      templateUrl:'/static/new/partials/displayRegionCardView.html',
+      controller:'DisplayRegionCardController'
+    }).state('displayRegionListView',{
+      url:'/displayRegion/list',
+      templateUrl:'/static/new/partials/displayRegionListView.html',
+      controller:'DisplayRegionListController'
+    }).state('displayRegionDetails',{
+      url:'/displayRegion/:name',
+      templateUrl:'/static/new/partials/displayRegionDetails.html',
+      controller:'DisplayRegionDetailsController'
+    }).state('displayRegionAdd',{
+      url:'/displayRegion/add',
+      templateUrl:'/static/new/partials/addDisplayRegion.html',
+      controller:'DisplayRegionAddController'
+    }).state('displayRegionEdit',{
+      url:'/displayRegion/edit/:name',
+      templateUrl:'/static/new/partials/addDisplayRegion.html',
+      controller:'DisplayRegionEditController'
+    })
+})

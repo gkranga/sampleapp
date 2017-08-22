@@ -1,0 +1,40 @@
+<div class="col-md-3 left_col">
+  <div class="left_col scroll-view">
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+      <div class="menu_section">
+        <ul class="nav side-menu">
+          <li class="active">
+            <a id="menu_toggle">
+              <div class="bar_icon font28 fa fa-bars "></div>
+              <div class="nav_lft_ala">
+                {{resourceName}}
+              </div>
+            </a>
+          </li>
+          <div class="nav_lft_vig" style="overflow-y: auto; overflow-x: hidden;">
+            <ul class="nav nav-list">
+                <li   ng-repeat="(serviceGroupName,serviceGroup) in sidebar[0].service">
+                  <label class="tree-toggler nav-header custom-sidebar-select" >
+                      <i class="menu_toggle"></i>
+                      {{translate(serviceGroupName)}} 
+                      <span class="fa fa-chevron-down"></span>
+                  </label>
+                  <ul class="nav nav-list tree" >
+                      <li ng-repeat="services in serviceGroup" data-ng-click="serviceGroupName=='adminServices' ? redirect(services,sidebar[0].name) : redirectToListView(services, sidebar[0].name)"  ng-hide="services == 'customers' || serviceGroupName != 'adminServices' " >
+                        <label class="tree-toggler nav-header custom-normal-select" >{{services}}
+                        </label>
+                      </li>
+                      <li ng-repeat="services in serviceGroup" data-ng-click="serviceGroupName=='adminServices' ? redirect(searchKeyWord(services), sidebar[0].name) : redirectToListView(searchKeyWord(services), sidebar[0].name)"  ng-show="serviceGroupName != 'adminServices' && resourcesObject[searchKeyWord(services)]>=0" >
+                        <label class="tree-toggler nav-header custom-normal-select" >{{services}}
+                        </label>
+                      </li>                      
+                  </ul>
+               </li>
+            </ul>
+          </div>
+        </ul>
+      </div>
+    </div>

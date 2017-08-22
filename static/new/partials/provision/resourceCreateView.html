@@ -1,0 +1,70 @@
+<div ng-include="'static/new/partials/sidebar.html'"></div>
+<div class="row right_col pdnlft0 provisioning-page" role="main">
+    <div class="col-lg-12 page-title">
+        <div class="title_left col-md-6">
+            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> | <a ui-sref="resources({customerName: customerName, resourceName: resourceName, serviceName: serviceName,key:''})">{{translate(resourceName)}}</a></h2>
+        </div>
+    </div>
+    <div ng-if="!provisioningTypeSelected" class="compute-new-instance" role="main">
+        <div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="content-block">
+                        <div class="your-class">
+                            <div ng-repeat="type in pagesJson[resourceName]" class="content-cards col-lg-1 text-center" ng-click="setProvisioningType(type)">
+                                <div class="no-padding">
+                                  <img class="content-cards-icon" ng-src="static/new/images/provision/{{type.tabSlug}}.png">
+                                </div>
+                                <div class="text-center content-cards-title">
+                                    <p>{{translate(type.tabSlug)}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="provisioningTypeSelected && !cspSelected" class="compute-new-instance" role="main">
+        <div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="content-block">
+                        <div class="your-class">
+                            <div ng-repeat="(cspName,cspJson) in provisioningTypeSelected.wizard" ng-click="setCsp(cspJson, cspName)" class="content-cards col-lg-1 text-center">
+                                <div class="no-padding">
+                                  <img class="content-cards-icon" ng-src="static/new/images/provision/{{cspName}}.png">
+                                </div>
+                                <div class="text-center content-cards-title">
+                                    <p>{{translate(cspName)}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="cspSelected && provisioningTypeSelected" class="col-lg-12 details-btm-section list-view-page">
+        <div class="col-lg-12 compute-new-instance-forms-page no-padding">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+                <div class="service-provider-icon-box no-padding">
+                    <img class="service-provider-icon ng-scope" ng-src="static/new/images/provision/{{cspSelectedName}}.png">
+                </div>
+                <form name="forms" class="col-lg-11">
+                    <wizard on-finish="finishWizard(forms)" template="static/new/partials/provision/wizard.html" class="col-lg-12">
+                        <wz-step ng-repeat="(wizardStep,wizardData) in cspSelected" wz-title="{{wizardStep}}" canexit="$eval(wizardData.exit)" class="col-lg-12 wizard-steps-wrapper table-responsive">
+                            <formly-form model="model" fields="fields[resourceName][cspSelectedName][wizardStep]" form="forms[wizardStep]">
+                                <div style="text-align:right">
+                                    <button type="submit" ng-if="!wizardData.noNextStep" ng-disabled="forms[wizardStep].$invalid" wz-next class="btn btn-primary submit-button">Next</button>
+                                    <button type="submit" ng-if="wizardData.finishingStep" ng-disabled="forms.$invalid" wz-finish class="btn btn-primary submit-button">Finish</button>
+                                    <button type="submit" class="btn btn-danger submit-button" ng-click="cancel()">Cancel</button>
+                                </div>
+                            </formly-form>
+                        </wz-step>
+                    </wizard>
+                </form>
+            </div>          
+        </div>
+    </div>
+</div>

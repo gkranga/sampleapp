@@ -1,0 +1,29 @@
+{
+  "name": "api-service-NATS",
+  "main": "index.js",
+  "version": "0.0.0",
+  "authors": [
+    "Vignesh Nallamad <vignesh.nallamad@gmail.com>"
+  ],
+  "description": "Node service for NATS",
+  "keywords": [
+    "NATS",
+    "service"
+  ],
+  "license": "UNLICENSE",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "bootstrap": "~3.3.4",
+    "respond": "~1.4.2",
+    "html5shiv": "~3.7.2",
+    "bootswatch": "~3.3.5"
+  }
+}

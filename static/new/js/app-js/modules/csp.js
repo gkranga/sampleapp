@@ -1,0 +1,23 @@
+angular.module('swire').config(function($stateProvider,$httpProvider,$locationProvider){
+    $stateProvider.state('cspCardView',{
+      url:'/csp',
+      templateUrl:'/static/new/partials/cspCardView.html',
+      controller:'CspCardController'
+    }).state('cspListView',{
+      url:'/csp/list',
+      templateUrl:'/static/new/partials/cspListView.html',
+      controller:'CspListController'
+    }).state('cspDetails',{
+      url:'/csp/:name',
+      templateUrl:'/static/new/partials/cspDetails.html',
+      controller:'CspDetailsController'
+    }).state('cspAdd',{
+      url:'/csp/add',
+      templateUrl:'/static/new/partials/addCsp.html',
+      controller:'CspAddController'
+    }).state('cspEdit',{
+      url:'/csp/edit/:name',
+      templateUrl:'/static/new/partials/addCsp.html',
+      controller:'CspEditController'
+    })
+})

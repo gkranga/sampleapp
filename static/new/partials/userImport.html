@@ -1,0 +1,140 @@
+<div class="col-md-3 left_col">
+  <div class="left_col scroll-view">
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+      <div class="menu_section">
+        <ul class="nav side-menu">
+          <li>
+            <a id="menu_toggle">
+              <i class="font28 fa fa-bars"></i>
+            </a>
+          </li>
+          <div class="nav_lft_vig" style="overflow-y: auto; overflow-x: hidden;">
+            <ul class="nav nav-list">
+                <li>
+                  <label class="tree-toggler nav-header" ng-class="master == 'administrator' ? 'custom-sidebar-select' : 'custom-normal-select'">
+                      <i class="menu_toggle"></i>
+                      {{translate('administration')}} 
+                      <span class="fa fa-chevron-down"></span>
+                  </label>
+                  <ul class="nav nav-list tree" ng-class="master == 'administrator' ? 'show' : ''">
+                      <li ng-repeat="customer in sidebar">
+                        <label class="tree-toggler nav-header" ng-class="customerName == customer.name && master == 'administrator' ? 'custom-customer-select' : 'custom-normal-select'">{{customer.name}}
+                          <span class="fa fa-chevron-down"></span>
+                        </label>
+                        <ul class="nav nav-list tree" ng-class="customer.name == customerName ? 'show' : ''">
+                          <li ng-repeat="customerService in customer.service" ng-hide="customerService=='customers'" ng-class="service == customerService && customerName == customer.name && master == 'administrator' ? 'custom-service-select' : ''">
+                            <a ui-sref="listView({customerName: customer.name, service: customerService})">{{translate(customerService)}}</a>
+                          </li>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+                <li>
+                  <label class="tree-toggler nav-header" ng-class="master == 'request' ? 'custom-sidebar-select' : 'custom-normal-select'">
+                      <i class="menu_toggle"></i>
+                      {{translate('request')}} 
+                      <span class="fa fa-chevron-down"></span>
+                  </label>
+                  <ul class="nav nav-list tree" ng-class="master == 'request' ? 'show' : ''">
+                      <li ng-repeat="customer in sidebar">
+                        <label class="tree-toggler nav-header" ng-class="master == 'request' && customerName == customer.name ? 'custom-customer-select' : 'custom-normal-select'">{{customer.name}}
+                          <span class="fa fa-chevron-down"></span>
+                        </label>
+                        <ul class="nav nav-list tree" ng-class="customer.name == customerName ? 'show' : ''">
+                          <li ng-class="service == 'myRequests' && master == 'request' && customer.name == customerName ? 'custom-sidebar-select' : 'custom-normal-select'">
+                            <a ui-sref="myRequestListView({customerName: customer.name})">{{translate('myRequests')}}</a>
+                          </li>
+                          <li ng-class="service == 'forApprovals' && master == 'request' && customer.name == customerName ? 'custom-service-select' : 'custom-normal-select'">
+                            <a ui-sref="requestListView({customerName: customer.name})">{{translate('forApprovals')}}</a>
+                          </li>
+                        </ul>
+                      </li>
+                  </ul>
+                </li>
+            </ul>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <!-- /sidebar menu -->
+  </div>
+</div>
+
+<!-- page content -->
+<div class="right_col pdnlft0" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> | <a ui-sref="listView({customerName: customerName, service: service})">{{translate(service)}}</a> | {{serviceName || 'New' }} | Import </h2>
+      </div>
+    </div>
+    <!-- <div class="clearfix"></div>                    -->
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <div id="myTabContent" class="tab-content">
+              <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_content pdn-top15" ng-if="!csv.result">
+                    <div class="col-md-6">
+                      <button class="btn">REMOTE DIRECTORY</button>
+                      <p>Upload connecting to a remote directory.<br>This uses the existing LDAP configuration.</p>
+                    </div>
+                    <div class="col-md-6">
+                      <button class="btn" onclick="$('#csv-file').find('input:file').trigger('click')">CSV FILE</button>
+                      <div id="csv-file" class="hidden">
+                        <ng-csv-import content="csv.content"
+                          class="btn"
+                          header="csv.header"
+                          separator="csv.separator"
+                          result="csv.result"
+                          accept="csv.accept"
+                          callback="csvComplete">
+                        </ng-csv-import>
+                      </div>
+                      <p>Upload using a csv file.<br>This file should have column headers exactly matching as below.</p>
+                      <p>EMAIL ADDRESS</p>
+                      <p>FIRST NAME</p>
+                      <p>LAST NAME</p>
+                      <p>ADDRESS</p>
+                      <p>COUNTRY</p>
+                      <p>ZIP CODE</p>
+                    </div>
+                  </div>
+                  <div class="x_content pdn-top15" ng-if="csv.result">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>EMAIL ADDRESS</th>
+                          <th>FIRST NAME</th>
+                          <th>LAST NAME</th>
+                          <th>ADDRESS</th>
+                          <th>COUNTRY</th>
+                          <th>ZIP CODE</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="rows in csv.result">
+                          <td>{{rows['EMAIL ADDRESS']}}</td>
+                          <td>{{rows['FIRST NAME']}}</td>
+                          <td>{{rows['LAST NAME']}}</td>
+                          <td>{{rows['ADDRESS']}}</td>
+                          <td>{{rows['COUNTRY']}}</td>
+                          <td>{{rows['ZIP CODE']}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

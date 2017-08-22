@@ -1,0 +1,113 @@
+<div ng-include="'static/new/partials/sidebar.html'"></div>
+
+<!-- page content -->
+<div class="right_col pdnlft0" role="main">
+  <div class="">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel pdntop0">
+          <div class="x_title">
+            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> / <a ui-sref="listView({customerName: customerName, service: service})">{{translate(service)}}</a></h2>
+            <ul class="nav navbar-right panel_toolbox minwidthauto seachtab">
+              <li class="mgn_ryt6" ng-if="permissions.create">
+                <a title="{{translate('add')}}" href="javascript:void(0);" ui-sref="add({customerName: customerName, service:service})" role="button" ><i class="font18px fa fa-plus"></i></a>
+              </li>
+              <li class="searchtable">
+                <div class="form-group pull-right top_search">
+                  <div class="input-group main_search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <input type="text" class="form-control" ng-model="customFilter" ng-change="searchTable()" placeholder="Search...">
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content" ng-if="permissions.read">
+            <table class="table table-responsive" datatable="ng" dt-options="dtOptions" dt-instance="dtInstanceCallback">
+              <thead>
+                <tr>
+                  <th ng-repeat="key in keyMapper[service]['table'] | keys" ng-if="key!='actions'" ng-init="name = keyMapper[service]['table'][key]">{{name}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="rowData in serviceData['statusMessage']" ng-click="setSelectedRow(rowData)" ng-class="rowData === selectedServiceData ? 'selected' : ''">
+                  <td ng-repeat="key in keyMapper[service]['table'] | keys" ng-if="key!='actions'">{{rowData[key]}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="details-btm-section">
+          <div class="x_panel">
+            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+              <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                <li role="presentation" class="tabssma"><a href=".tab_content1" id="home_tab" role="tab" data-toggle="tab" aria-expanded="true"><button class="btn btn-default list-view-tabs ng-binding" ng-style="{'font-weight': isTabActive(tab.tabName)}">{{translate('detail')}}</button></a>
+                </li>
+                <li role="presentation" class="tabssma"><a href=".tab_content2" id="activity_tab" role="tab" data-toggle="tab" aria-expanded="true"><button class="btn btn-default list-view-tabs ng-binding" ng-style="{'font-weight': isTabActive(tab.tabName)}">{{translate('activityLog')}}</button></a>
+                </li>
+                <li role="presentation" ng-if="service == 'myRequests'" class="tabssma"><a href=".tab_content3" id="notification_tab" role="tab" data-toggle="tab" aria-expanded="true"><button class="btn btn-default list-view-tabs ng-binding" ng-style="{'font-weight': isTabActive(tab.tabName)}">{{translate('notification')}}</button></a>
+                </li>
+                <li class="pull-right tabssma" ng-if="service == 'forApprovals'"><a ng-click="rejectRequest()"><button class="btn untag-btn btn-custom top_tiles">Reject</button></a></li>
+                <li class="pull-right tabssma" ng-if="service == 'forApprovals'"><a ng-click="approveRequest()"><button class="btn btn-primary btn-custom top_tiles">Approve</button></a></li>
+              </ul>
+              <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade tab_content1 active in" id="tab_content1" aria-labelledby="home_tab">
+                  <div class="container col-md-12 mgntp7">
+                    <div class="col-md-6">
+                      <span class="">{{translate('description') | uppercase}}</span>
+                      <div class="form-group pdn-top10">
+                        <textarea class="col-md-12 pdn-top30 bgn-white" disabled>{{selectedServiceData.description}}</textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div>
+                        <span>{{translate('project') | uppercase}}</span>
+                        <br>
+                        <div class="form-group pdn-top10">
+                          <span class="col-md-12 bgn-white">{{selectedServiceData.projectName}}</span>
+                        </div>
+                      </div>
+                      <div class="pdn-top30 pdnbtm25">
+                        <span>{{translate('approvers') | uppercase}}</span>
+                        <br>
+                        <div class="form-group pdn-top10">
+                          <span class="col-md-12 bgn-white">{{selectedServiceData.accountName}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade tab_content2" id="tab_content2" aria-labelledby="activity_tab">
+                  <div class="container col-md-12 mgntp7 pdnbtm25">
+                    <div class="form-group pdn-top10">
+                      <textarea class="col-md-10 pdn-top30 bgn-white" ng-model="newComment"></textarea>
+                      <button class="mgn-left10 col-md-1" ng-click="addComment()">UPDATE</button>
+                    </div>
+                    <div class="col-md-12 pdn-top30">
+                      <p ng-repeat="comment in selectedServiceData.comments">{{comment}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div role="tabpanel" ng-if="service == 'myRequests'" class="tab-pane fade tab_content3" id="tab_content3" aria-labelledby="notification_tab">
+                  <div class="container col-md-12 mgntp7">
+                    <div class="col-md-6">
+                      <span class="">{{translate('description') | uppercase}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /page content -->

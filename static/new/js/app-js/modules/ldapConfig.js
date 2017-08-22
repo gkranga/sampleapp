@@ -1,0 +1,23 @@
+angular.module('swire').config(function($stateProvider,$httpProvider,$locationProvider){
+    $stateProvider.state('ldapConfigCardView',{
+      url:'/ldapConfig',
+      templateUrl:'/static/new/partials/ldapConfigCardView.html',
+      controller:'ldapConfigCardController'
+    }).state('ldapConfigListView',{
+      url:'/ldapConfig/list',
+      templateUrl:'/static/new/partials/ldapConfigListView.html',
+      controller:'ldapConfigListController'
+    }).state('ldapConfigDetails',{
+      url:'/ldapConfig/:name',
+      templateUrl:'/static/new/partials/ldapConfigDetails.html',
+      controller:'ldapConfigDetailsController'
+    }).state('ldapConfigAdd',{
+      url:'/ldapConfig/add',
+      templateUrl:'/static/new/partials/addldapConfig.html',
+      controller:'ldapConfigAddController'
+    }).state('ldapConfigEdit',{
+      url:'/ldapConfig/edit/:name',
+      templateUrl:'/static/new/partials/addldapConfig.html',
+      controller:'ldapConfigEditController'
+    })
+})

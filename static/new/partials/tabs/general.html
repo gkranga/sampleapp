@@ -1,0 +1,12 @@
+<table class="table" ng-if="!table.multipleRows" ng-init="tabInitComplete()">
+  <thead>
+    <tr>
+      <th ng-repeat="columnKey in table.columns | keys" ng-init="name = table.columns[columnKey]">{{objectTransform(name)}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td ng-repeat="columnKey in table.columns | keys">{{selectedServiceData[columnKey]}}</td>
+    </tr>
+  </tbody>
+</table>

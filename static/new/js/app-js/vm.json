@@ -1,0 +1,80 @@
+{
+"applicationLb":{
+"table":{
+"lbName": "LB Name",
+"projectName": {"type": "link", "service": "projects", "name": "Project Name"},
+"csp": {"type": "link", "service": "displayCsp", "name": "CSP"},
+"region": {"type": "link", "service": "displayRegion", "name": "Region"},
+"price": "Price",
+"unbilledAmount": "Unbilled Amount",
+"vpcId": {"type": "link", "service": "vpc", "name": "VPC Id"},
+"dnsName": "DNS Name",
+"state": "State",
+"type": "Type"
+},
+"tab":[
+{"tabName": "General",
+"tabData": [
+{
+"name": "",
+"columns": {
+"buName": {"type": "link", "service": "bus", "name": "BU Name"},
+"accountName": {"type": "link", "service": "accounts", "name": "Account Name"},
+"createdBy": "Created By",
+"createdTime": "Created Time"
+}
+}]
+},
+{"tabName": "Availability Zone",
+"tabData": [
+{
+"name": "",
+"columns": {
+"subnetId": {"type": "link", "service": "subnet", "name": "Subnet Id"},
+"zoneName": "Zone Name"
+}
+}]
+},
+{"tabName": "Listeners",
+"tabData": [
+{
+"name": "",
+"columns": {
+"protocol": "Protocol",
+"port": "Port",
+"listnerId": "Listner Id",
+"targetGroupId": "Target Group Id",
+"rulesPolcy":"Rules Polcy",
+}
+}]
+},
+{"tabName": "Target Groups",
+"tabData": [
+{
+"name": "",
+"columns": {
+"groupName": "Group Name",
+"protocol": "Protocol",
+"port": "Port",
+"vpcId": {"type": "link", "service": "vpc", "name": "VPC Id"},
+"hcPort": "HC Port",
+"hcProtocol": "HC Protocol",
+"hcPath": "HC Path",
+"hcInterval": "HC Interval",
+"hcThreshold": "HC Threshold",
+"hcTimeout": "HC Timeout"
+}
+}]
+},
+{"tabName": "Target Group Health Status",
+"tabData": [
+{
+"name": "",
+"columns": {
+"targetId": "Target Id",
+"port": "Port",
+"state": "State"
+}
+}]
+}
+]}}

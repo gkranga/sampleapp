@@ -1,0 +1,130 @@
+<div class="col-md-3 left_col" ng-if="isSwa">
+  <div class="left_col scroll-view">
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+      <div class="menu_section">
+        <ul class="nav side-menu">
+          <li>
+            <a id="menu_toggle">
+              <i class="font28 fa fa-bars"></i>
+            </a>
+          </li>
+          <div class="nav_lft_vig" style="overflow-y: auto; overflow-x: hidden;">
+            <ul class="nav nav-list">
+              <li>
+                <label class="tree-toggler nav-header" ng-class="master == 'administrator' ? 'custom-sidebar-select' : 'custom-normal-select'">
+                    <i class="menu_toggle"></i>
+                    {{translate('administration')}} 
+                    <span class="fa fa-chevron-down"></span>
+                </label>
+                <ul class="nav nav-list tree" ng-class="master == 'administrator' ? 'show' : ''">
+                    <li>
+                      <label class="tree-toggler nav-header custom-customer-select">servicewire
+                        <span class="fa fa-chevron-down"></span>
+                      </label>
+                      <ul class="nav nav-list tree show">
+                        <li ng-class="service == 'users' ? 'custom-service-select' : ''">
+                          <a ui-sref="swaListView({service: 'users'})">{{translate('users')}}</a>
+                        </li>
+                        <li ng-class="service == 'customers' ? 'custom-service-select' : ''">
+                          <a ui-sref="swaListView({service: 'customers'})">{{translate('customers')}}</a>
+                        </li>
+                      </ul>
+                    </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <!-- /sidebar menu -->
+  </div>
+</div>
+
+<div ng-if="!isSwa" ng-include="'static/new/partials/sidebar.html'"></div>
+
+<!-- page content -->
+<div class="right_col pdnlft0" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> | <a ui-sref="listView({customerName: customerName, service: service})">{{translate(service)}}</a> | {{serviceName || 'New' }}</h2>
+      </div>
+    </div>
+    <!-- <div class="clearfix"></div>      -->
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <!-- <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+              <li role="presentation" class="active tabssma"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">{{translate('details')}}</a>
+              </li>
+            </ul> -->
+            <div id="myTabContent" class="tab-content">
+              <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                <form class="form-horizontal form-label-left pdn12" ng-submit="createLocalUser()">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_content pdn-top15">
+                      <div class="col-md-6">
+                        <div class="form-group" ng-class="!localUser ? 'col-md-10' : ''">
+                          <label>{{translate('email')}}</label>
+                          <input type="email" name="uid" required class="form-control" ng-model="selectedServiceData.uid" placeholder="Email">
+                        </div>
+                        <div class="col-md-2" ng-show="!localUser">
+                          <label>&nbsp;</label>
+                          <button type="button" class="btn btn-sm" ng-click="checkLocalUser()">Check</button>
+                        </div>
+                        <div class="form-group" ng-show="localUser">
+                          <label for="fname">{{translate('userFirstname')}}</label>
+                          <input type="text" name="fname" ng-model="selectedServiceData.fname" placeholder="First Name" ng-maxlength="20" class="form-control" ng-required='1' required>
+                        </div>
+                        <div class="form-group" ng-show="localUser">
+                          <label for="sname">{{translate('userLastname')}}</label>
+                          <input type="text" name="sname" ng-model="selectedServiceData.sname" placeholder="Last Name" ng-maxlength="20" class="form-control">
+                        </div>
+                        <div class="form-group" ng-show="localUser">
+                          <label for="userPhone">{{translate('userPhone')}}</label>
+                          <input type="text" name="userPhone" ng-model="selectedServiceData.userPhone" placeholder="Phone" class="form-control" ng-required='1' ng-pattern="/^(\d)+$/" pattern="[0-9]+" required>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group" ng-show="localUser">
+                          <label for="userAddress">{{translate('userAddress')}}</label>
+                          <input type="text" name="userAddress" ng-model="selectedServiceData.userAddress" placeholder="Address" maxlength="50" class="form-control" ng-required='1' required>
+                        </div>
+                        <div class="form-group" ng-show="localUser">
+                          <label for="userCity">{{translate('userCity')}}</label>
+                          <input type="text" name="userCity" ng-model="selectedServiceData.userCity" placeholder="City" ng-pattern="/^[a-zA-Z\s]*$/" pattern="[A-Za-z ]*" ng-maxlength="20" maxlength="20" title="only characters" ng-required='1' class="form-control" required>
+                        </div>
+                        <div class="form-group" ng-show="localUser">
+                          <label for="userCountry">{{translate('userCountry')}}</label>
+                          <input type="text" name="userCountry" ng-model="selectedServiceData.userCountry" placeholder="Country" class="form-control" pattern="[A-Za-z ]*" ng-pattern="/^[a-zA-Z\s]*$/" maxlength="20" ng-maxlength="20" title="only characters" ng-required='1' required>
+                        </div>
+                        <div class="form-group" ng-show="localUser">
+                          <label for="userZip">{{translate('zip')}}</label>
+                          <input type="number" name="userZip" ng-model="selectedServiceData.userZip" placeholder="Zip Code" class="form-control" max="9999999999" ng-required='1' required>
+                        </div>
+                        <div class="form-group" ng-show="localUser" ng-init="selectedServiceData.isActive = 'yes'">
+                          <label>User Status Active:</label><br />
+                          <input type="radio" name="isActive" value="yes" ng-model="selectedServiceData.isActive" checked required>Yes
+                          <input type="radio" name="isActive" value="no" ng-model="selectedServiceData.isActive">No
+                        </div>
+                        <button type="submit" class="btn btn-sm pull-right" ng-show="localUser">Save</button>
+                      </div>
+                    </div>
+                    <div class="x_content">
+                      <button type="button" class="btn pull-right" ui-sref="userImport({customerName: customerName})">BULK UPLOAD</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

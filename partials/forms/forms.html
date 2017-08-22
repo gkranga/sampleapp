@@ -1,0 +1,329 @@
+<script id="createCustomerTemplate" type="text/x-handlebars-template">
+  <form action="/api/createCustomer" method="post">
+    <input type="text" name="customerName" maxlength="50" required  class="form-control" placeholder="Customer Name">
+    <input type="text" name="customerAddress1" maxlength="50" required class="form-control" placeholder="Customer address line 1">
+    <input type="text" name="customerAddress2" maxlength="50" class="form-control" placeholder="Customer address line 2">
+    <input type="text" name="customerCity" maxlength="20" required class="form-control" placeholder="Customer city">
+    <input type="text" name="customerState" maxlength="20" required class="form-control" placeholder="Customer state">
+    <input type="text" name="customerCountry" pattern="[A-Za-z ]{20}" required class="form-control" maxlength="20" placeholder="Customer country">
+    <input type="number" name="customerZip" required class="form-control" placeholder="Customer zip" max="9999999999">
+    <input type="email" name="customerEmail" required class="form-control" placeholder="Customer email">
+    <!-- <input type="url" name="customerDomain" required class="form-control" placeholder="Customer domain"> -->
+    <input type="number" name="customerPhone" required class="form-control" max="999999999999999" placeholder="Customer phone">
+    <p>Customer status: </p>
+    <input type="radio" name="isActive" value="yes" checked>Yes
+    <input type="radio" name="isActive" value="no">No
+    <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+  </form>
+</script>
+
+<script id="updateCustomerTemplate" type="text/x-handlebars-template">
+    <form action="/api/updateCustomer" method="post">
+        <input type="text" name="customerName" class="form-control" placeholder="Customer Name" readonly>
+        <input type="text" name="customerAddress1" maxlength="50" required class="form-control" placeholder="Customer address line 1">
+        <input type="text" name="customerAddress2" maxlength="50" class="form-control" placeholder="Customer address line 2">
+        <input type="text" name="customerCity" maxlength="20" required class="form-control" placeholder="Customer city">
+        <input type="text" name="customerState" maxlength="20" required class="form-control" placeholder="Customer state">
+        <input type="text" name="customerCountry" pattern="[A-Za-z ]{20}" required maxlength="20" class="form-control" placeholder="Customer country">
+        <input type="number" name="customerZip" required class="form-control" placeholder="Customer zip" max="9999999999">
+        <input type="email" name="customerEmail" required class="form-control" placeholder="Customer email">
+        <input type="number" name="customerPhone" required class="form-control" placeholder="Customer phone" max="999999999999999">
+        <p>Customer status: </p>
+        <input type="radio" name="isActive" value="yes">Yes
+        <input type="radio" name="isActive" value="no">No
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="createBuTemplate" type="text/x-handlebars-template">
+    <form action="/api/createBu" method="post">
+        <input type="text" name="buName" required class="form-control" placeholder="BU Name">
+        <input type="text" name="buDescription" required maxlength="50" class="form-control" placeholder="BU Description">
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly="">
+        <p>BU Status: </p>
+        <input type="radio" name="isActive" value="yes" checked>Yes
+        <input type="radio" name="isActive" value="no">No
+        <input type="number" name="buBudget" class="form-control" placeholder="BU Budget">
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="updateBuTemplate" type="text/x-handlebars-template">
+    <form action="/api/updateBu" method="post">
+        <input type="text" name="buName" required class="form-control" readonly>
+        <input type="text" name="buDescription" required maxlength="50" class="form-control" placeholder="BU Description">
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly>
+        <p>BU Status: </p>
+        <input type="radio" name="isActive" value="yes">Yes
+        <input type="radio" name="isActive" value="no">No
+        <input type="number" name="buBudget" class="form-control" placeholder="BU Budget">
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="createProjectTemplate" type="text/x-handlebars-template">
+    <form action="/api/createProject" method="post">
+        <input type="text" name="projectName" required class="form-control" placeholder="Project Name">
+        <input type="text" name="projectDescription" required class="form-control" maxlength="50" placeholder="Project Description">
+        <!-- <input type="text" name="buName" required class="form-control" placeholder="BU Name"> -->
+        <select name="buName" required class="form-control" placeholder="BU Name" data-service="bus">
+            <option value="" selected disabled>BU Name</option>
+        </select>
+        <!-- <input type="text" name="accountName" required class="form-control" placeholder="Account Name"> -->
+        <select name="accountName" required class="form-control" placeholder="Account Name"  data-service="accounts">
+            <option value="" selected disabled>Account Name</option>
+        </select>
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly>
+        <input type="date" name="projectStartdate" class="form-control min-date" required placeholder="Start Date">
+        <input type="date" name="projectEnddate" class="form-control max-date" required placeholder="End Date" min=>
+        <p>Project Status: </p>
+        <input type="radio" name="isActive" value="yes" checked>Yes
+        <input type="radio" name="isActive" value="no">No
+        <input type="number" name="projectBudget" class="form-control" placeholder="Project Budget">
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="updateProjectTemplate" type="text/x-handlebars-template">
+    <form action="/api/updateProject" method="post">
+        <input type="text" name="projectName" required class="form-control" readonly>
+        <input type="text" name="projectDescription" class="form-control" maxlength="50" required placeholder="Project Description">
+        <!-- <input type="text" name="buName" required class="form-control" placeholder="BU Name"> -->
+        <select name="buName" required class="form-control" placeholder="BU Name"  data-service="bus">
+            <option value="" selected disabled>BU Name</option>
+        </select>
+        <!-- <input type="text" name="accountName" required class="form-control" placeholder="Account Name"> -->
+        <select name="accountName" required class="form-control" placeholder="Account Name"  data-service="accounts">
+            <option value="" selected disabled>Account Name</option>
+        </select>
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly>
+        <input type="date" name="projectStartdate" class="form-control min-date" required placeholder="Start Date">
+        <input type="date" name="projectEnddate" class="form-control max-date" required placeholder="End Date">
+        <p>Project Status: </p>
+        <input type="radio" name="isActive" value="yes">Yes
+        <input type="radio" name="isActive" value="no">No
+        <input type="number" name="projectBudget" class="form-control" placeholder="Project Budget">
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="createAccountTemplate" type="text/x-handlebars-template">
+    <form action="/api/createAccount" method="post">
+        <input type="text" name="accountName" required class="form-control" placeholder="Account Name">
+        <input type="text" name="accountDescription" required maxlength="50" class="form-control" placeholder="Account Description">
+        <select name="csp" required class="form-control" placeholder="CSP" data-service="csps">
+            <option value="" selected disabled>CSP</option>
+        </select>
+        <!-- <select name="displayRegion" required class="form-control" placeholder="Display Region" data-service="displayRegions">
+            <option value="" selected disabled>Display Region</option>
+        </select> -->
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly="">
+        <input type="text" name="accountAPIkey" class="form-control" placeholder="API Key">
+        <input type="text" name="accountSecretkey" class="form-control" placeholder="Secret Key">
+        <!-- <select name="projectName" class="form-control" placeholder="Project Name">
+            <option value="" selected disabled>Project Name</option>
+            <option value="abc">abc</option>
+        </select> -->
+        <p>Account Status: </p>
+        <input type="radio" name="isActive" value="yes" checked>Yes
+        <input type="radio" name="isActive" value="no">No
+        <input type="number" name="accountBudget" class="form-control" placeholder="Account Budget">
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="updateAccountTemplate" type="text/x-handlebars-template">
+    <form action="/api/updateAccount" method="post">
+        <input type="text" name="accountName" required class="form-control" readonly>
+        <input type="text" name="accountDescription" maxlength="50" required class="form-control" placeholder="Account Description">
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly="">
+        <select name="csp" required class="form-control" placeholder="CSP" data-service="csps">
+            <option value="" selected disabled>CSP</option>
+        </select>
+        <!-- <select name="displayRegion" required class="form-control" placeholder="Display Region" data-service="displayRegions">
+            <option value="" selected disabled>Display Region</option>
+        </select> -->
+        <input type="text" name="accountAPIkey" class="form-control" placeholder="API Key">
+        <input type="text" name="accountSecretkey" class="form-control" placeholder="Secret Key">
+        <!-- <select name="projectName" placeholder="Project Name">
+            <option value="" selected disabled>Project Name</option>
+            <option value="abc">abc</option>
+        </select> -->
+        <p>Account Status: </p>
+        <input type="radio" name="isActive" value="yes" required checked>Yes
+        <input type="radio" name="isActive" value="no">No
+        <input type="number" name="accountBudget" class="form-control" placeholder="Account Budget">
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="createUserTemplate" type="text/x-handlebars-template">
+    <form action="/api/createUser" method="post">
+        <input type="email" name="uid" placeholder="User Email" class="form-control" required>
+        <input type="text" name="fname" placeholder="First Name" maxlength="20" class="form-control" required>
+        <input type="text" name="sname" placeholder="Last Name" maxlength="20" class="form-control" required>
+        <input type="text" name="userAddress" placeholder="Address" maxlength="50" class="form-control" required>
+        <input type="text" name="userCity" placeholder="City" pattern="[A-Za-z ]{20}" class="form-control" required>
+        <input type="text" name="userCountry" placeholder="Country" pattern="[A-Za-z ]{20}" class="form-control" required>
+        <input type="number" name="userZip" placeholder="Zip Code" class="form-control" max="9999999999" required>
+        <input type="number" name="userPhone" placeholder="Phone" class="form-control" required max="999999999999999">
+        <% if (user['isSwa'] != 'yes') { %>
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly="">
+        <% } %>
+        <p>User Status: </p>
+        <input type="radio" name="isActive" value="yes" checked>Yes
+        <input type="radio" name="isActive" value="no">No
+        <!-- <select name="tagRole" placeholder="Tag Role" class="form-control" multiple>
+            <option value="" selected disabled>Tag Role</option>
+            <option value="abc">abc</option>
+        </select> -->
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="updateUserTemplate" type="text/x-handlebars-template">
+    <form action="/api/updateUser" method="post">
+        <input type="email" name="uid" placeholder="User Email" class="form-control" readonly required>
+        <input type="text" name="fname" placeholder="First Name" maxlength="20" class="form-control" required>
+        <input type="text" name="sname" placeholder="Last Name" maxlength="20" class="form-control" required>
+        <input type="text" name="userAddress" placeholder="Address" maxlength="50" class="form-control" required>
+        <input type="text" name="userCity" placeholder="City" pattern="[A-Za-z ]{20}" class="form-control" required>
+        <input type="text" name="userCountry" placeholder="Country" class="form-control" pattern="[A-Za-z ]{20}" required>
+        <input type="number" name="userZip" placeholder="Zip Code" class="form-control" max="9999999999" required>
+        <input type="number" name="userPhone" placeholder="Phone" class="form-control" required max="999999999999999">
+        <% if (user['isSwa'] != 'yes') { %>
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly="">
+        <% } %>
+        <p>User Status: </p>
+        <input type="radio" name="isActive" value="yes">Yes
+        <input type="radio" name="isActive" value="no">No
+        <!-- <select name="tagRole" placeholder="Tag Role" class="form-control" multiple>
+            <option value="" selected disabled>Tag Role</option>
+            <option value="abc">abc</option>
+        </select> -->
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="createDisplayCspTemplate" type="text/x-handlebars-template">
+    <form action="/api/createDisplayCsp" method="post">
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly>
+        <input type="text" name="displayCspName" required class="form-control" placeholder="Display CSP Name" maxlength="20">
+        <select name="csp" required class="form-control" placeholder="CSP" data-service="csps">
+            <option value="" selected disabled>CSP</option>
+        </select>
+        <select name="accountName" required class="form-control" placeholder="Account Name"  data-service="accounts">
+            <option value="" selected disabled>Account Name</option>
+        </select>
+        <p>Is active?: </p>
+        <input type="radio" name="isActive" value="yes" checked>Yes
+        <input type="radio" name="isActive" value="no">No
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="updateDisplayCspTemplate" type="text/x-handlebars-template">
+    <form action="/api/updateDisplayCsp" method="post">
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly>
+        <input type="text" name="displayCspName" required class="form-control" placeholder="Display CSP Name" maxlength="20" readonly>
+        <select name="csp" required class="form-control" placeholder="CSP" data-service="csps">
+            <option value="" selected disabled>CSP</option>
+        </select>
+        <select name="accountName" required class="form-control" placeholder="Account Name"  data-service="accounts">
+            <option value="" selected disabled>Account Name</option>
+        </select>
+        <p>Is active?: </p>
+        <input type="radio" name="isActive" value="yes">Yes
+        <input type="radio" name="isActive" value="no">No
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="createDisplayRegionTemplate" type="text/x-handlebars-template">
+    <form action="/api/createDisplayRegion" method="post">
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly>
+        <input type="text" name="displayRegionName" required class="form-control" placeholder="Display Region Name" maxlength="20">
+        <select name="displayCspName" required class="form-control dispCspChange" placeholder="Display CSP Name" data-service="displayCsps">
+            <option value="" selected disabled>Display CSP</option>
+        </select>
+        <select name="regionName" required class="form-control" placeholder="Region Name">
+            <option value="" selected disabled>Region Name</option>
+        </select>
+        <p>Is active?: </p>
+        <input type="radio" name="isActive" value="yes" checked>Yes
+        <input type="radio" name="isActive" value="no">No
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="updateDisplayRegionTemplate" type="text/x-handlebars-template">
+    <form action="/api/updateDisplayRegion" method="post">
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly>
+        <input type="text" name="displayRegionName" required class="form-control" placeholder="Display Region Name" maxlength="20" readonly>
+        <select name="displayCspName" required class="form-control dispCspChange" placeholder="Display CSP Name" data-service="displayCsp">
+            <option value="" selected disabled>Display CSP</option>
+        </select>
+        <select name="regionName" required class="form-control" placeholder="Region Name"  data-service="region">
+            <option value="" selected disabled>Region Name</option>
+        </select>
+        <p>Is active?: </p>
+        <input type="radio" name="isActive" value="yes">Yes
+        <input type="radio" name="isActive" value="no">No
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="tagCaTemplate" type="text/x-handlebars-template">
+    <form action="/api/tagCa" method="post">
+        <!-- <input type="text" name="customerName" required class="form-control" placeholder="Customer Name"> -->
+        <select name="customerName" required class="form-control" placeholder="Customer Name" data-service="customers">
+            <option value="" selected disabled>Customer Name</option>
+        </select>
+        <input type="text" name="uid" required class="form-control" placeholder="User Id" readonly>
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="tagBuaTemplate" type="text/x-handlebars-template">
+    <form action="/api/tagBu" method="post">
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly>
+        <input type="text" name="uid" required class="form-control" placeholder="User Id">
+        <!-- <input type="text" name="buName" required class="form-control" placeholder="BU Name"> -->
+        <select name="buName" required class="form-control" placeholder="BU Name" data-service="bus">
+            <option value="" selected disabled>BU Name</option>
+        </select>
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="tagPaTemplate" type="text/x-handlebars-template">
+    <form action="/api/tagProjectAdmin" method="post">
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly>
+        <input type="text" name="uid" required class="form-control" placeholder="User Id">
+        <!-- <input type="text" name="projectName" required class="form-control" placeholder="Project Name"> -->
+        <select name="projectName" required class="form-control" placeholder="Project Name" data-service="projects">
+            <option value="" selected disabled>Project Name</option>
+        </select>
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="tagPuTemplate" type="text/x-handlebars-template">
+    <form action="/api/tagProjectUser" method="post">
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly>
+        <input type="text" name="uid" required class="form-control" placeholder="User Id">
+        <!-- <input type="text" name="projectName" required class="form-control" placeholder="Project Name"> -->
+        <select name="projectName" required class="form-control" placeholder="Project Name" data-service="projects">
+            <option value="" selected disabled>Project Name</option>
+        </select>
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>
+
+<script id="tagAaRoleTemplate" type="text/x-handlebars-template">
+    <form action="/api/tagAaRole" method="post">
+        <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly>
+        <input type="text" name="uid" required class="form-control" placeholder="User Id">
+        <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+    </form>
+</script>

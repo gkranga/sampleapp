@@ -1,0 +1,88 @@
+<div class="col-md-3 left_col">
+  <div class="left_col scroll-view">
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+      <div class="menu_section">
+        <ul class="nav side-menu">
+          <li class="active">
+            <a id="menu_toggle">
+              <div class="bar_icon font28 fa fa-bars "></div>
+              <div class="nav_lft_ala">
+                {{serviceSingular}}
+              </div>
+            </a>
+          </li>
+          <div class="nav_lft_vig" style="overflow-y: auto; overflow-x: hidden;">
+            <ul class="nav nav-list">
+              <li>
+                <label class="tree-toggler nav-header" ng-class="master == 'administrator' ? 'custom-sidebar-select' : 'custom-normal-select'">
+                  <i class="menu_toggle"></i>
+                  {{translate('administration')}}
+                  <span class="fa fa-chevron-down"></span>
+                </label>
+                <ul class="nav nav-list tree" ng-class="master == 'administrator' ? 'show' : ''">
+                  <li ng-repeat="customer in sidebar | filter:{name:customerName}:strict">
+                    <!-- <label class="tree-toggler nav-header" ng-class="customerName == customer.name && master == 'administrator' ? 'custom-customer-select' : 'custom-normal-select'">{{customer.name}}
+                      <span class="fa fa-chevron-down"></span>
+                    </label> -->
+                    <!-- {{customer.service['adminServices']}} -->
+                    <ul class="nav nav-list tree" ng-class="customer.name == customerName ? 'show' : ''">
+                      <li ng-repeat="customerService in customer.service['adminServices']" ng-class="service == customerService && customerName == customer.name && master == 'administrator' ? 'custom-service-select' : ''">
+                        <a ui-sref="listView({customerName: customer.name, service: customerService})">{{translate(customerService)}}</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <label class="tree-toggler nav-header" ng-class="master == 'request' ? 'custom-sidebar-select' : 'custom-normal-select'">
+                  <i class="menu_toggle"></i>
+                  {{translate('request')}}
+                  <span class="fa fa-chevron-down"></span>
+                </label>
+                <ul class="nav nav-list tree" ng-class="master == 'request' ? 'show' : ''">
+                  <li ng-repeat="customer in sidebar | filter:{name:customerName}:strict">
+                    <!-- <label class="tree-toggler nav-header" ng-class="master == 'request' && customerName == customer.name ? 'custom-customer-select' : 'custom-normal-select'">{{customer.name}}
+                      <span class="fa fa-chevron-down"></span>
+                    </label> -->
+                    <ul class="nav nav-list tree" ng-class="customer.name == customerName ? 'show' : ''">
+                      <li ng-class="service == 'myRequests' && master == 'request' && customer.name == customerName ? 'custom-sidebar-select' : 'custom-normal-select'">
+                        <a ui-sref="myRequestListView({customerName: customer.name})">{{translate('myRequests')}}</a>
+                      </li>
+                      <li ng-class="service == 'forApprovals' && master == 'request' && customer.name == customerName ? 'custom-service-select' : 'custom-normal-select'">
+                        <a ui-sref="requestListView({customerName: customer.name})">{{translate('forApprovals')}}</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+
+              <li data-ng-repeat="(key,value) in customerSideBar.service" ng-if="key != 'adminServices'">
+                <label class="tree-toggler nav-header" ng-class="master == key ? 'custom-sidebar-select' : 'custom-normal-select'">
+                  <i class="menu_toggle"></i>
+                  {{translate(key)}}
+                  <span class="fa fa-chevron-down"></span>
+                </label>
+                <ul class="nav nav-list tree" ng-class="master == key ? 'show' : ''">
+                  <li>
+                    <ul class="nav nav-list tree" ng-class="customerSideBar.name == customerName ? 'show' : ''">
+                      <li ng-repeat="customerService in value" ng-hide="customerService=='customers'" ng-class="master == key && resourceName == customerService? 'custom-service-select' : ''">
+                        <a ui-sref="resources({serviceName:key,customerName: customerSideBar.name, resourceName: customerService,key:''})" ng-if="key!='finance'">{{translate(customerService)}}</a>
+                        <a ui-sref="billing({customerName: customerSideBar.name})" ng-if="key === 'finance' && customerService === 'billing'" >{{translate(customerService).charAt(0).toUpperCase() +  translate(customerService).substr(1).toLowerCase()}}</a>
+                        <a ui-sref="budget-list({customerName: customerSideBar.name})" ng-if="key === 'finance' && customerService === 'budget'">{{translate(customerService).charAt(0).toUpperCase() +  translate(customerService).substr(1).toLowerCase()}}</a>
+                        <!--  -->
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+          </div>
+        </ul>
+      </div>
+    </div>
+    <!-- /sidebar menu -->
+  </div>
+</div>

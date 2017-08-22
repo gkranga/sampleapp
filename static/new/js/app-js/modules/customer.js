@@ -1,0 +1,23 @@
+angular.module('swire').config(function($stateProvider,$httpProvider,$locationProvider){
+    $stateProvider.state('customerCardView',{
+      url:'/customer',
+      templateUrl:'/static/new/partials/customerCardView.html',
+      controller:'CustomerCardController'
+    }).state('customerListView',{
+      url:'/customer/list',
+      templateUrl:'/static/new/partials/customerListView.html',
+      controller:'CustomerListController'
+    }).state('customerDetails',{
+      url:'/customer/:name',
+      templateUrl:'/static/new/partials/customerDetails.html',
+      controller:'CustomerDetailsController'
+    }).state('customerAdd',{
+      url:'/customer/add',
+      templateUrl:'/static/new/partials/addCustomer.html',
+      controller:'CustomerAddController'
+    }).state('customerEdit',{
+      url:'/customer/edit/:name',
+      templateUrl:'/static/new/partials/addCustomer.html',
+      controller:'CustomerEditController'
+    })
+})

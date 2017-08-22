@@ -1,0 +1,13 @@
+<table class="table" ng-if="table.multipleRows" ng-init="loadAccountsOfProject(selectedServiceData[serviceSingularName], table.role)">
+  <thead>
+    <tr>
+      <th ng-repeat="columnKey in table.columns | keys" ng-init="name = table.columns[columnKey]">{{objectTransform(name)}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td ng-repeat="columnKey in table.columns | keys">{{accountsOfProject[columnKey]}}</td>
+    </tr>
+  </tbody>
+</table>
+<button ng-repeat="button in table.buttonAction" ng-if="permissions.all.indexOf(button.buttonAction) > -1" class="btn pull-right" ui-sref="tagView({customerName: customerName, service: service, serviceName: selectedServiceData[serviceSingularName], tagName: button.buttonAction, role: table.role})">{{button.buttonName}}</button>

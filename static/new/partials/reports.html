@@ -1,0 +1,145 @@
+<div ng-include="'static/new/partials/sidebar.html'"></div>
+<div class="row right_col pdnlft0 billing-page" role="main">
+    <div class="col-lg-12 page-title">
+        <div class="title_left col-md-6">
+            <h2 class="pdntp10"><a>{{customerName}}</a> | <a ui-sref="billing({customerName: customerSideBar.name})">{{translate(resourceName)}}</a></h2>
+        </div>
+    </div>
+    <div class="col-lg-11 details-btm-section list-view-page">
+        <div class="col-lg-12 compute-new-instance-forms-page no-padding" role="tabpanel" data-example-id="togglable-tabs" >
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+                <div class="charts-container">
+
+                    <div class="chart-wrapper col-lg-12 no-padding">
+                        <div class="col-lg-2">
+                            <form class="form-horizontal" novalidate>
+                                <label class="">Module</label>
+                                <div class="form-group active-input">
+                                    <select class="form-control">
+                                    <option selected>All</option>                   
+                                    <option>2</option>                   
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                            
+                                <div class="col-lg-2 form-group active-input pull-right m-t-25">
+                                    <button class="btn btn-primary btn-custom pull-right">Refresh</button>
+                                </div>
+                            <div class="col-lg-2 pull-right m-t-25">
+                                <form class="form-horizontal" novalidate>
+                                    <div class="form-group active-input">
+                                        <select class="form-control">
+                                        <option selected>Pdf</option>                   
+                                        <option>2</option>                   
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                         <div class="col-lg-12 listview-table-wrapper table-responsive">
+                            <table class="table" >
+                                <thead>
+                                    <th>Test</th>
+                                    <th>Test</th>
+                                    <th>Test</th>
+                                    <th>Test</th>
+                                    <th>Test</th>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="key in [1,2,3,4,5]">
+                                        <td ng-repeat="key in [1,2,3,4,5]" >
+                                        Dummy Data
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- {{billingData}} -->
+    <div class="data-filter-aside col-xs-1 col-sm-1 col-md-1 col-lg-1 no-padding">
+        <label class="section-title">Data filters</label>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Period</label>
+                <select class="form-control" ng-model="billing.period" ng-change="periodChange()">
+                    <option value="current">Current Month</option>
+                    <option value="3m">Last 3 months</option>
+                    <option value="6m">Last 6 months</option>
+                    <option value="12m" >Last 12 months</option>
+                    <!-- <option value="cus">Custom</option> -->
+                </select>
+            </div>
+        </form>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Provider</label>
+                <select class="form-control" ng-model="billing.csp" ng-change="providerChange()">
+                    <option selected value="all">All</option>
+                    <option ng-repeat="csp in billing.csps" value="{{csp.name}}">{{csp.name}}</option>                   
+                </select>
+            </div>
+        </form>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Region</label>
+                <select class="form-control" ng-model="billing.region">
+                    <option value="all">All</option>
+                    <option ng-repeat="region in billing.regions[0]" value="region">{{region}}</option>                   
+                </select>
+            </div>
+        </form>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Account</label>
+                 <select class="form-control" ng-model="billing.account" ng-change="accountChange()">
+                    <option value="all">All</option>
+                    <option ng-repeat="account in billing.accounts" value="{{account.name}}">{{account.name}}</option>                   
+                </select>
+            </div>
+        </form>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Business Unit</label>
+                 <select class="form-control" ng-model="billing.bu">
+                    <option value="all">All</option>
+                    <option ng-repeat="bu in billing.bus" value="bu">{{bu.name}}</option>                   
+                </select>
+            </div>
+        </form>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Project</label>
+                 <select class="form-control" ng-model="billing.project" ng-change="accountChange()">
+                    <option value="all">All</option>
+                    <option ng-repeat="project in billing.projects" value="project">{{project}}</option>                   
+                </select>
+            </div>
+        </form>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Resource Type</label>
+                 <select class="form-control" ng-model="billing.resourceName">
+                    <option value="all">All</option>
+                    <option ng-repeat="resourceName in billing.resourceNames" value="resourceName">{{resourceName}}</option>                   
+                </select>
+            </div>
+        </form>
+        <!-- <ul>
+            <li ng-repeat="region in billing.regions" value="region">{{region}}</li>
+        </ul> -->
+        <!-- <span>These filters apply for all the four charts</span> -->
+        <!-- <div class="form-group active-input">
+                <label>Resource Type</label> -->
+                <!-- <button class="btn btn-primary btn-custom" ng-click="refreshBilling()">Refresh</button>
+            </div> -->
+    </div>
+</div>

@@ -1,0 +1,125 @@
+<div ng-include="'static/new/partials/sidebar.html'"></div>
+
+            <!-- page content -->
+            <div class="right_col pdnlft0" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> | <a ui-sref="listView({customerName: customerName, service: service})">{{translate(service)}}</a> | {{serviceName || 'New' }}</h2>
+                        </div>
+                    </div
+
+                    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <!-- <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+              <li role="presentation" class="active tabssma"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">{{translate('details')}}</a>
+              </li>
+            </ul> -->
+
+
+            <div id="myTabContent" class="tab-content">
+              <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                <!-- <div class="clearfix"></div> -->
+                <form class="form-horizontal form-label-left pdn12" ng-submit="save()">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_content pdn-top15">
+                      <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>Project Name</label>
+                          <input type="text" name="projectName" required class="form-control" ng-model="selectedServiceData.projectName" placeholder="Project Name" ng-readonly="editFlag">
+                        </div>
+                        <div class="form-group">
+                          <label>Project Description</label>
+                          <input type="text" name="projectDescription" ng-model="selectedServiceData.projectDescription" required maxlength="50" class="form-control"
+                          placeholder="Project Description">
+                        </div>
+                        <div class="form-group">
+                          <label>Customer Name</label>
+                          <input type="text" name="customerName" required class="form-control" ng-model="selectedServiceData.customerName" placeholder="Customer Name" readonly="">
+                        </div>
+                        <div class="form-group">
+                          <label>BU Name</label>
+                          <select name="buName" required class="form-control" ng-model="selectedServiceData.buName" placeholder="BU Name" data-service="bus">
+                            <option value="" selected disabled>BU Name</option>
+                            <option ng-repeat="bu in bus" value="{{bu.value}}" ng-selected="bu.value == selectedServiceData.buName">{{bu.name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>Account Name</label>
+                          <select name="accountName" required class="form-control" ng-model="selectedServiceData.accountName" placeholder="Account Name" data-service="accounts">
+                            <option value="" selected disabled>Account Name</option>
+                            <option ng-repeat="account in accounts" value="{{account.value}}" ng-selected="account.value == selectedServiceData.accountName">{{account.name}}</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Project Budget</label>
+                          <input type="text" name="projectBudget" class="form-control" ng-model="selectedServiceData.projectBudget" placeholder="Project Budget" pattern="[0-9]*" title="Only numbers">
+                        </div>
+                        <div class="form-group">
+                          <label>Start Date</label>
+                          <div class="datepicker" date-format="yyyy-MM-dd" date-max-limit="{{selectedServiceData.projectEnddate}}">
+                            <input class="form-control" onkeydown="return false;" ng-model="selectedServiceData.projectStartdate" type="text" required/>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label>End Date</label>
+                          <div class="datepicker" date-format="yyyy-MM-dd" date-max-limit="{{selectedServiceData.projectStartdate}}">
+                            <input class="form-control" onkeydown="return false;" ng-model="selectedServiceData.projectEnddate" type="text" required/>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label>Project Status Active:</label><br />
+                          <input type="radio" name="isActive" value="yes" ng-model="selectedServiceData.isActive" ng-checked="true" checked required>Yes
+                          <input type="radio" name="isActive" value="no" ng-model="selectedServiceData.isActive">No
+                        </div>
+                        <button class="btn btn-success pull-right form-submit" type="submit">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- <div class="tab-content" ng-if="editFlag && permissions.all.indexOf('tagPa') > 0">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_content">
+                  <h4>Tag Pa:</h4>
+                  <div class="form-group col-md-6">
+                    <label>User:</label>
+                    <select class="form-control" ng-model="taggedUser">
+                      <option ng-repeat="user in serviceData[customerName].users" value="{{user.uid}}">{{user.fname}} {{user.sname}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <p>&nbsp;</p>
+                    <button class="btn btn-success" type="button" ng-click="tagPa()">Tag</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-content" ng-if="editFlag && permissions.all.indexOf('tagPu') > 0">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_content">
+                  <h4>Tag Pu:</h4>
+                  <div class="form-group col-md-6">
+                    <label>User:</label>
+                    <select class="form-control" ng-model="taggedUser1">
+                      <option ng-repeat="user in serviceData[customerName].users" value="{{user.uid}}">{{user.fname}} {{user.sname}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <p>&nbsp;</p>
+                    <button class="btn btn-success" type="button" ng-click="tagPu()">Tag</button>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

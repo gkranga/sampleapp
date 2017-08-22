@@ -1,0 +1,62 @@
+  <table class="table data-table row-details-data-table" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th></th>
+        <%
+          if (data.length) {
+            Object.keys(data[Math.floor(data.length / 2)]).forEach(function(newKey) {
+              if ((adminFormat[service]['table'][newKey]) && ((newKey == 'actions') || ((typeof data[Math.floor(data.length / 2)][newKey] != 'object') && !(newKey == 'customerName' && service == 'users')))) {
+        %>
+        <th><%= adminFormat[service]['table'][newKey] %></th>
+        <%
+              }
+            });
+          }
+        %>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        data.forEach(function(subData) {
+          if(service == "users" || service == "customers" || subData['actions'].join().toLowerCase().indexOf('read') != -1) {
+      %>
+      <tr>
+        <td class="details-control" data-content="<%= JSON.stringify(subData) %>" data-service="<%= service %>"></td>
+        <%
+          Object.keys(subData).forEach(function(newKey) {
+            if ((adminFormat[service]['table'][newKey]) && (newKey != 'actions' && typeof subData[newKey] != 'object' && !(newKey == 'customerName' && service == 'users'))) {
+        %>
+        <td><%= subData[newKey] %></td>
+        <% 
+            }
+          });
+        %>
+        <%
+          Object.keys(subData).forEach(function(newKey) {
+            if (newKey == 'actions') {
+        %>
+        <td>
+          <select class="form-control form-trigger">
+            <option value="" selected disabled>Actions</option>
+        <% 
+          subData[newKey].forEach(function(acts) {
+            if (acts.indexOf('read') == -1 && acts.indexOf('create') == -1 && acts.indexOf('list') == -1) {
+        %>
+            <option value="<%= acts %>"><%= acts %></option>
+        <%
+            }
+          })
+        %>
+          </select>
+        </td>
+        <% 
+            }
+          });
+        %>
+        </tr>
+      <%
+          }
+        });     
+      %>
+    </tbody>
+  </table>

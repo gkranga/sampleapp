@@ -1,0 +1,518 @@
+{
+  "customers":{
+    "table":{
+      "customerName":"Customer Name",
+      "customerEmail":"Email Id",
+      "isActive":"Is Active ?",
+      "customerPhone":"Phone",
+      "customerCity":"City",
+      "customerCountry":"Country"
+    },
+    "tab":[
+      {
+        "tabName":"General",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "customerAddress1":"Address 1",
+              "customerAddress2":"Address 2",
+              "customerState":"State",
+              "customerZip":"Zip Code",
+              "createdUser":"Created By"
+            },
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Customer Admins",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"ca",
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"BUs",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "buName":"BU Name",
+              "buDescription":"BU Description",
+              "isActive":"Is Active ?",
+              "buBudget":"Budget",
+              "createdUser":"Created By"
+            },
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"BU Admins",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"bua",
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Accounts",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "buName":"Account Name",
+              "buDescription":"Account Description",
+              "isActive":"Is Active ?",
+              "buBudget":"Budget",
+              "createdUser":"Created By"
+            },
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Account Admins",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"aa",
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Projects",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "projectName":"Project Name",
+              "projectDescription":"Project Description",
+              "projectStartdate":"Start Date",
+              "projectEnddate":"End Date",
+              "isActive":"Is Active ?",
+              "projectBudget":"Budget",
+              "createdUser":"Created By"
+            },
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Project Admins",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"pa",
+            "multipleRows":true
+          }
+        ]
+      }
+    ]
+  },
+  "users":{
+    "table":{
+      "uid":"User Id",
+      "firstName":"First Name",
+      "lastName":"Last Name",
+      "isActive":"Is Active ?",
+      "isLocal":"Is Local ?",
+      "emailValidated":"Email Validated ?"
+    },
+    "tab":[
+      {
+        "tabName":"General",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "userAddress":"Address",
+              "userCity":"City",
+              "userCountry":"Country",
+              "userZip":"Zip Code",
+              "userPhone":"Phone",
+              "createdUser":"Created By"
+            },
+            "multipleRows":false
+          }
+        ]
+      },
+      {
+        "tabName":"Customer Admin",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "createdUser":"Created By"
+            },
+            "role":"ca",
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"BU Admin",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "createdUser":"Created By"
+            },
+            "role":"bua",
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Account Admin",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "createdUser":"Created By"
+            },
+            "role":"aa",
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Project Admin",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "createdUser":"Created By"
+            },
+            "role":"pa",
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Project User",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "createdUser":"Created By"
+            },
+            "role":"pu",
+            "multipleRows":true
+          }
+        ]
+      }
+    ]
+  },
+  "bus":{
+    "table":{
+      "buName":"BU Name",
+      "buDescription":"BU Description",
+      "isActive":"Is Active ?",
+      "buBudget":"Budget",
+      "createdUser":"Created By"
+    },
+    "tab":[
+      {
+        "tabName":"BU Admins",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"bua",
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Projects",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "projectName":"Project Name",
+              "projectDescription":"Project Description",
+              "projectStartdate":"Start Date",
+              "projectEnddate":"End Date",
+              "isActive":"Is Active ?",
+              "projectBudget":"Budget",
+              "createdUser":"Created By"
+            },
+            "multipleRows":true
+          }
+        ]
+      }
+    ]
+  },
+  "accounts":{
+    "table":{
+      "accountName":"Account Name",
+      "csp":"CSP",
+      "isActive":"Is Active ?",
+      "accountBudget":"Budget",
+      "createdUser":"Created By"
+    },
+    "tab":[
+      {
+        "tabName":"General",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "accountDescription":"Account Description",
+              "accountAPIkey":"API Key",
+              "accountSecretkey":"Secret Key",
+              "accountId":"Account ID"
+            }
+          }
+        ]
+      },
+      {
+        "tabName":"Account Admins",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"aa",
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Projects",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "projectName":"Project Name",
+              "projectDescription":"Project Description",
+              "projectStartdate":"Start Date",
+              "projectEnddate":"End Date",
+              "isActive":"Is Active ?",
+              "projectBudget":"Budget",
+              "createdUser":"Created By"
+            },
+            "multipleRows":true
+          }
+        ]
+      }
+    ]
+  },
+  "projects":{
+    "table":{
+      "projectName":"Project Name",
+      "buName":"BU Name",
+      "projectDescription":"Project Description",
+      "projectStartdate":"Start Date",
+      "projectEnddate":"End Date",
+      "isActive":"Is Active ?",
+      "projectBudget":"Budget",
+      "createdUser":"Created By"
+    },
+    "tab":[
+      {
+        "tabName":"Accounts",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "buName":"Account Name",
+              "buDescription":"Account Description",
+              "isActive":"Is Active ?",
+              "buBudget":"Budget",
+              "createdUser":"Created By"
+            }
+          }
+        ]
+      },
+      {
+        "tabName":"Project Admins",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"pa",
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Project Users",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "firstName":"First Name",
+              "lastName":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"pu",
+            "multipleRows":true
+          }
+        ]
+      }
+    ]
+  },
+  "displayCsps":{
+    "table":{
+      "displayCspName":"Display CSP Name",
+      "createdUser":"Created By",
+      "csp":"CSP",
+      "accountName":"Account Name",
+      "createdUser":"Created By"
+    },
+    "tab":[
+
+    ]
+  },
+  "displayRegions":{
+    "table":{
+      "displayRegionName":"Display Region Name",
+      "displayCspName":"Display CSP Name",
+      "regionName":"Region Name",
+      "isActive":"Is active?",
+      "createdUser":"Created By"
+    },
+    "tab":[
+
+    ]
+  },
+  "myRequests":{
+    "table":{
+      "requestId":"Req No",
+      "createdby":"Requestor",
+      "status":"Status",
+      "timestamp":"Req Date",
+      "accountName":"Account Name",
+      "projectName":"Project Name"
+    },
+    "tab":[
+
+    ]
+  },
+  "forApprovals":{
+    "table":{
+      "requestId":"Req No",
+      "createdby":"Requestor",
+      "timestamp":"Req Date",
+      "accountName":"Account Name",
+      "projectName":"Project Name"
+    },
+    "tab":[
+
+    ]
+  },
+  "myResources":{
+        "table":{
+        },
+        "tab":{
+            "general":"General",
+            "tags":"Tags",
+            "storage":"Storage",
+            "network":"Network",
+            "virtualMachine":"Virtual Machine",
+            "securityPolicy":"Security Policy",
+            "ipPermissions":"IP Permissions",
+            "tags":"Tags",
+            "inBound":"inBound",
+            "outBound":"outBound",
+            "osDisk":"OS Disks",
+            "dataDisks":"Data Disks",
+            "blockDeviceMapping":"Block Device Mapping",
+            "attachments":"Attachments",
+            "adminContact":"Admin Contact",
+            "registrantContact":"Registrant Contact",
+            "techContact":"Tech Contact",
+            "config":"Config",
+            "recordSets":"Record Sets",
+            "listeners":"Listeners",
+            "healthCheck":"Health Check",
+            "instanceHealthStatus":"Instance Health Status",
+            "ipPermissions":"IP Permissions",
+            "attachedVms":"Attached VMs"         
+       }
+    }
+}

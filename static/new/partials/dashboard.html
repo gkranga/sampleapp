@@ -1,0 +1,122 @@
+<div class="right_col art_board_2" role="main" ng-if="!isSwa" data-ng-repeat="customer in sidebar | filter:{name: customerName}:strict">
+    <div class="">
+        <div class="section clearfix">
+            <div class="container">
+                <div class="row" ng-repeat="(serviceGroupName,serviceGroup) in customer.service">
+
+                    <div class="col-lg-12 content-block" ng-if="serviceGroupName !== 'finance'">
+                        <h4 class="side-hr">{{ translate(serviceGroupName) | uppercase }}</h4>
+                        <div class="your-class col-lg-12">
+                            <div class="content-cards col-lg-1 text-center" data-ng-repeat="serviceName in serviceGroup" data-ng-click="serviceGroupName=='adminServices' ? redirect(serviceName, customer.name) : redirectToListView(serviceName, customer.name)" ng-if="serviceName != 'customers' && serviceGroupName == 'adminServices'">
+                                <div>
+                                  <img class="content-cards-icon" ng-if="serviceGroupName == 'adminServices'" src="/static/new/images/icons/{{serviceName}}.png" width="60" height="60">
+                                </div>
+                                <div>
+                                  <h1>{{ customersObject[customer.name][serviceName].length || 0 }}</h1>
+                                </div>
+                                <div>
+                                  <h3>{{ translate(serviceName) }}</h3>
+                                </div>
+                            </div>
+
+                            <div class="content-cards col-lg-1 text-center" data-ng-repeat="serviceName in serviceGroup" data-ng-click="serviceGroupName=='adminServices' ? redirect(serviceName, customer.name) : redirectToListView(searchKeyWord(serviceName), customer.name,serviceGroupName)" ng-if="serviceGroupName != 'adminServices'" >
+                                <div>
+                                  <img class="content-cards-icon"  src="/static/new/images/icons/{{serviceName}}.png" width="50" height="50">
+                                  <img class="content-cards-icon"  src="/static/new/images/0.gif" width="60" height="60" ng-hide="resourcesObject[searchKeyWord(serviceName)]>=0">
+                                </div>
+                                <div>
+                                  <h1>{{ resourcesObject[searchKeyWord(serviceName)] }}</h1>
+                                </div>
+                                <div>
+                                  <h3>{{ translate(serviceName) }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- for swa -->
+<div class="right_col art_board_2" role="main" ng-if="isSwa">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left col-md-6">
+                <h2></h2>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>{{ translate('administration') }}</h2>
+                        <span class="dasboard_line"></span>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="row ">
+                        <div class="container_content pdn-top30">
+                            <div class="col-md-2 col-sm-4 col-xs-6 profile_details cards"  data-ng-click="redirectToSwaUserList()">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12 thumb">
+                                        <img src="/static/new/images/icons/users.png">
+                                        <h2>{{customersObject.users.length}}</h2>
+                                        <h4 class="brief">{{ translate('users') }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6 profile_details cards" data-ng-click="redirectToSwaCustomerList()">
+                                <div class="well profile_view">
+                                    <div class="col-sm-12 thumb">
+                                        <img src="/static/new/images/icons/customers.png">
+                                        <h2>{{customersObject.customers.length}}</h2>
+                                        <h4 class="brief">{{ translate('customers') }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-if="!isSwa">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>{{ translate('resource') }}</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="container_content" >
+                            <div class="cir_container">
+                                <div class="circle" data-ng-repeat="serviceName in customer.service" data-ng-click="redirect(serviceName, customer.name)" ng-hide="serviceName == 'customers'">
+                                    <div class="cir_txt">{{ customersObject[customer.name][serviceName].length || 0 }}</div>
+                                    <div class="cir_title">{{ translate(serviceName) }}</div>
+                                </div>
+
+                                <div class="circle" ng-if="checkRequest(customer.role)" data-ng-click="redirectToList('forApprovals', customer.name)">
+                                    <div class="cir_txt">{{customer.requestCount}}</div>
+                                    <div class="cir_title">{{ translate('requests') }}</div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content

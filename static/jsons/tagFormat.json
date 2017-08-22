@@ -1,0 +1,84 @@
+{
+  "users":{
+    "uid":{
+      "type":"text",
+      "name":"uid",
+      "key":"uid",
+      "displayName":"User Id"
+    },
+    "fname":{
+      "type":"text",
+      "name":"fname",
+      "key":"fname",
+      "displayName":"First Name"
+    },
+    "sname":{
+      "type":"text",
+      "name":"sname",
+      "key":"sname",
+      "displayName":"Last Name"
+    },
+    "isLocal":{
+      "type":"select",
+      "key":"isLocal",
+      "options":[
+        {
+          "displayName":"Yes",
+          "value":"yes"
+        },
+        {
+          "displayName":"No",
+          "value":"no"
+        }
+      ],
+      "displayName":"Is Local?"
+    },
+    "emailValidated":{
+      "type":"select",
+      "key":"emailValidated",
+      "options":[
+        {
+          "displayName":"Yes",
+          "value":"yes"
+        },
+        {
+          "displayName":"No",
+          "value":"no"
+        }
+      ],
+      "displayName":"Email Validated?"
+    }
+  },
+  "customers":{
+    "name":{
+      "type":"text",
+      "name":"name",
+      "key":"name",
+      "displayName":"Customer Name"
+    }
+  },
+  "bus":{
+    "name":{
+      "type":"text",
+      "name":"buName",
+      "key":"buName",
+      "displayName":"BU Name"
+    }
+  },
+  "projects":{
+    "name":{
+      "type":"text",
+      "name":"projectName",
+      "key":"projectName",
+      "displayName":"Project Name"
+    }
+  },
+  "accounts":{
+    "name":{
+      "type":"text",
+      "name":"accountName",
+      "key":"accountName",
+      "displayName":"Account Name"
+    }
+  }
+}

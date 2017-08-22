@@ -1,0 +1,8 @@
+<div class="tab-content" ng-if="!tabTableView">
+  <ul class="list-group">{{}}
+    <li class= "list-group-item" ng-repeat="key in notSorted(tabtable.columns)"  ng-init="value = data[key]">
+	    <span style="font-weight: bold;">{{tabtable.columns[key]}} :</span>
+	    <span>  {{detailsData[key] | date : "y-MM-dd" }}</span>
+    </li>
+   </ul>
+</div>

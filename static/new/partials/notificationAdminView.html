@@ -1,0 +1,51 @@
+<div ng-include="'static/new/partials/sidebar.html'"></div>
+
+<div class="notification-admin-view-page">
+  <div class="row right_col pdnlft0" role="main">
+    <div class="col-lg-12">
+      <div class="title_left col-md-6 no-padding">
+        <h5 class="">Manage Notifications</h5>
+      </div>
+    </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-lg-12 no-padding">
+            <button type="submit" class="btn btn-primary submit-button">Save</button>
+        </div>
+        <div class="col-lg-12 form-wrapper">
+          <form class="form-horizontal col-lg-6" novalidate>
+          
+          <div class="form-group">
+            <label for="projects">Project(s)</label>
+            <div ng-dropdown-multiselect="" options="example14data" settings="examplesettings" selected-model="example14model" checkboxes="true" extra-settings="example14settings"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="Budget Start">Notification Name</label><br>
+            <input type="text" placeholder="Enter a unique name" class="form-control"/>
+          </div>
+          
+          <div class="form-group">
+            <label for="Budget Period">Notification Module</label>
+            <select class="form-control" id="exampleSelect1" ng-model="examplemodel">
+              <option value="" selected="selected">Select</option>
+              <option ng-repeat="(key, value) in notificationModule track by $index" value={{value.id}}>{{value.label}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="Budget Period">Notification Event</label>
+            <select class="form-control" id="exampleSelect2" ng-model="eventModel">
+            <option value="" selected="selected">Select</option>
+            <option ng-repeat="(key, value) in notificationEvent track by $index" value={{value.id}}>{{value.label}}</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="projects">Notification Method</label>
+            <div ng-dropdown-multiselect="" options="notificationMethods" settings="examplesettings" selected-model="notificationMethodsModel" checkboxes="true" extra-settings="example14settings"></div>
+          </div>  
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

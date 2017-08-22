@@ -1,0 +1,72 @@
+<div ng-include="'static/new/partials/sidebar.html'"></div>
+
+            <!-- page content -->
+            <div class="right_col pdnlft0" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> | <a ui-sref="listView({customerName: customerName, service: service})">{{translate(service)}}</a> | {{serviceName || 'New' }}</h2>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>                    
+
+                    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <!-- <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+              <li role="presentation" class="active tabssma"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">{{translate('details')}}</a>
+              </li>
+            </ul> -->
+
+
+            <div id="myTabContent" class="tab-content">
+              <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                <div class="clearfix"></div>
+                <form class="form-horizontal form-label-left pdn12" ng-submit="save()">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_content pdn-top15">
+                      <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>Display Region Name</label>
+                          <input type="text" name="displayRegionName" required class="form-control" ng-model="selectedServiceData.displayRegionName" placeholder="Display Region Name" ng-readonly="editFlag">
+                        </div>
+                        <div class="form-group">
+                          <label>Display CSP</label>
+                          <select name="displayCspName" required class="form-control" ng-model="selectedServiceData.displayCspName" placeholder="Display CSP" data-service="csps" ng-change="getRegions(selectedServiceData.displayCspName)">
+                              <option value="" selected disabled>Display CSP</option>
+                              <option ng-repeat="displayCsp in displayCsps" value="{{displayCsp.value}}" ng-selected="displayCsp.value==selectedServiceData.displayCspName">{{displayCsp.name}}</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Customer Name</label>
+                          <input type="text" name="customerName" required class="form-control" ng-model="selectedServiceData.customerName" placeholder="Customer Name" readonly="">
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>Region</label>
+                          <select name="regionName" required class="form-control" ng-model="selectedServiceData.regionName" placeholder="Region" data-service="region">
+                              <option value="" selected disabled>Region</option>
+                              <option ng-repeat="region in regions" value="{{region.value}}" ng-selected="region.value==selectedServiceData.regionName">{{region.name}}</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <p>Display Region Status Active: </p>
+                          <input type="radio" name="isActive" value="yes" ng-model="selectedServiceData.isActive" checked required>Yes
+                          <input type="radio" name="isActive" value="no" ng-model="selectedServiceData.isActive">No
+                        </div>
+                        <button class="btn btn-success pull-right form-submit" type="submit">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

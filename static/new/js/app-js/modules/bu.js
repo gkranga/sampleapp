@@ -1,0 +1,23 @@
+angular.module('swire').config(function($stateProvider,$httpProvider,$locationProvider){
+    $stateProvider.state('buCardView',{
+      url:'/bu',
+      templateUrl:'/static/new/partials/buCardView.html',
+      controller:'BuCardController'
+    }).state('buListView',{
+      url:'/bu/list',
+      templateUrl:'/static/new/partials/buListView.html',
+      controller:'BuListController'
+    }).state('buDetails',{
+      url:'/bu/:name',
+      templateUrl:'/static/new/partials/buDetails.html',
+      controller:'BuDetailsController'
+    }).state('buAdd',{
+      url:'/bu/add',
+      templateUrl:'/static/new/partials/addBu.html',
+      controller:'BuAddController'
+    }).state('buEdit',{
+      url:'/bu/edit/:name',
+      templateUrl:'/static/new/partials/addBu.html',
+      controller:'BuEditController'
+    })
+})

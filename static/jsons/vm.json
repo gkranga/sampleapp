@@ -1,0 +1,262 @@
+[{
+  "customerName": "ABCD",
+  "buName": "BU",
+  "accountName": "pgrep",
+  "projectName": "untagged",
+  "createdUser": "createdUser",
+  "csp": "AWS",
+  "region": "us-east-1",
+  "instanceId": "i-96add718",
+  "state": "running",
+  "flavorName": "t2.micro",
+  "privateIpAddress": "172.31.24.248",
+  "publicIpAddress": "54.254.224.248",
+  "publicDns": "10.0.0.7",
+  "privateDns": "ip-172-31-24-248.ap-southeast-1.compute.internal",
+  "launchTime": "2016-02-25 03:34:43 UTC",
+  "cpu": "1",
+  "memory": "1",
+  "monitoring": "disabled",
+  "architecture": "x86_64",
+  "operatingSystem": "linux",
+  "price": "0.013",
+  "unbilledAmount": 200,
+  "osDisk": "NA",
+  "dataDisks": [
+    {
+      "diskName": "/dev/sda1",
+      "diskCapacity": 8
+    }
+  ],
+  "availabilitySet": "ap-southeast-1a",
+  "tags": [
+    {
+      "Tags": "Name",
+      "Value": "backend01"
+    },
+    {
+      "Tags": "Random",
+      "Value": "backend02"
+    }
+  ],
+  "securityPolicy": {
+    "Inbound": [
+      {
+        "source": "CidrIp 1",
+        "portrange": {
+          "fromPort": "1",
+          "toPort": "2"
+        },
+        "protocol": "-1"
+      },
+      {
+        "source": "CidrIp 2",
+        "portrange": {
+          "fromPort": "1",
+          "toPort": "2"
+        },
+        "protocol": "-1"
+      },
+      {
+        "source": "CidrIp 3",
+        "portrange": {
+          "fromPort": "3",
+          "toPort": "0"
+        },
+        "protocol": "-2"
+      },
+      {
+        "source": "CidrIp 4",
+        "portrange": {
+          "fromPort": "3",
+          "toPort": "0"
+        },
+        "protocol": "-2"
+      }
+    ],
+    "Outbound": [
+      {
+        "destination": "0.0.0.0/0",
+        "portrange": {
+          "fromPort": "0",
+          "toPort": "0"
+        },
+        "protocol": "-1"
+      }
+    ]
+  }
+},{
+  "customerName": "ABCD",
+  "buName": "BU",
+  "accountName": "pgrep",
+  "projectName": "untagged",
+  "createdUser": "createdUser",
+  "csp": "AWS",
+  "region": "us-east-1",
+  "instanceId": "i-96add718",
+  "state": "running",
+  "flavorName": "t2.micro",
+  "privateIpAddress": "172.31.24.248",
+  "publicIpAddress": "54.254.224.248",
+  "publicDns": "10.0.0.7",
+  "privateDns": "ip-172-31-24-248.ap-southeast-1.compute.internal",
+  "launchTime": "2016-02-25 03:34:43 UTC",
+  "cpu": "1",
+  "memory": "1",
+  "monitoring": "disabled",
+  "architecture": "x86_64",
+  "operatingSystem": "linux",
+  "price": "0.013",
+  "unbilledAmount": 200,
+  "osDisk": "NA",
+  "dataDisks": [
+    {
+      "diskName": "/dev/sda1",
+      "diskCapacity": 8
+    }
+  ],
+  "availabilitySet": "ap-southeast-1a",
+  "tags": [
+    {
+      "Tags": "Name",
+      "Value": "backend01"
+    },
+    {
+      "Tags": "Random",
+      "Value": "backend02"
+    }
+  ],
+  "securityPolicy": {
+    "Inbound": [
+      {
+        "source": "CidrIp 1",
+        "portrange": {
+          "fromPort": "1",
+          "toPort": "2"
+        },
+        "protocol": "-1"
+      },
+      {
+        "source": "CidrIp 2",
+        "portrange": {
+          "fromPort": "1",
+          "toPort": "2"
+        },
+        "protocol": "-1"
+      },
+      {
+        "source": "CidrIp 3",
+        "portrange": {
+          "fromPort": "3",
+          "toPort": "0"
+        },
+        "protocol": "-2"
+      },
+      {
+        "source": "CidrIp 4",
+        "portrange": {
+          "fromPort": "3",
+          "toPort": "0"
+        },
+        "protocol": "-2"
+      }
+    ],
+    "Outbound": [
+      {
+        "destination": "0.0.0.0/0",
+        "portrange": {
+          "fromPort": "0",
+          "toPort": "0"
+        },
+        "protocol": "-1"
+      }
+    ]
+  }
+},{
+  "customerName": "ABCD",
+  "buName": "BU",
+  "accountName": "pgrep",
+  "projectName": "untagged",
+  "createdUser": "createdUser",
+  "csp": "AWS",
+  "region": "us-east-1",
+  "instanceId": "i-96add718",
+  "state": "running",
+  "flavorName": "t2.micro",
+  "privateIpAddress": "172.31.24.248",
+  "publicIpAddress": "54.254.224.248",
+  "publicDns": "10.0.0.7",
+  "privateDns": "ip-172-31-24-248.ap-southeast-1.compute.internal",
+  "launchTime": "2016-02-25 03:34:43 UTC",
+  "cpu": "1",
+  "memory": "1",
+  "monitoring": "disabled",
+  "architecture": "x86_64",
+  "operatingSystem": "linux",
+  "price": "0.013",
+  "unbilledAmount": 200,
+  "osDisk": "NA",
+  "dataDisks": [
+    {
+      "diskName": "/dev/sda1",
+      "diskCapacity": 8
+    }
+  ],
+  "availabilitySet": "ap-southeast-1a",
+  "tags": [
+    {
+      "Tags": "Name",
+      "Value": "backend01"
+    },
+    {
+      "Tags": "Random",
+      "Value": "backend02"
+    }
+  ],
+  "securityPolicy": {
+    "Inbound": [
+      {
+        "source": "CidrIp 1",
+        "portrange": {
+          "fromPort": "1",
+          "toPort": "2"
+        },
+        "protocol": "-1"
+      },
+      {
+        "source": "CidrIp 2",
+        "portrange": {
+          "fromPort": "1",
+          "toPort": "2"
+        },
+        "protocol": "-1"
+      },
+      {
+        "source": "CidrIp 3",
+        "portrange": {
+          "fromPort": "3",
+          "toPort": "0"
+        },
+        "protocol": "-2"
+      },
+      {
+        "source": "CidrIp 4",
+        "portrange": {
+          "fromPort": "3",
+          "toPort": "0"
+        },
+        "protocol": "-2"
+      }
+    ],
+    "Outbound": [
+      {
+        "destination": "0.0.0.0/0",
+        "portrange": {
+          "fromPort": "0",
+          "toPort": "0"
+        },
+        "protocol": "-1"
+      }
+    ]
+  }
+}]  

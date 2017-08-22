@@ -1,0 +1,23 @@
+angular.module('swire').config(function($stateProvider,$httpProvider,$locationProvider){
+    $stateProvider.state('projectCardView',{
+      url:'/project',
+      templateUrl:'/static/new/partials/projectCardView.html',
+      controller:'ProjectCardController'
+    }).state('projectListView',{
+      url:'/project/list',
+      templateUrl:'/static/new/partials/projectListView.html',
+      controller:'ProjectListController'
+    }).state('projectDetails',{
+      url:'/project/:name',
+      templateUrl:'/static/new/partials/projectDetails.html',
+      controller:'ProjectDetailsController'
+    }).state('projectAdd',{
+      url:'/project/add',
+      templateUrl:'/static/new/partials/addProject.html',
+      controller:'ProjectAddController'
+    }).state('projectEdit',{
+      url:'/project/edit/:name',
+      templateUrl:'/static/new/partials/addProject.html',
+      controller:'ProjectEditController'
+    })
+})

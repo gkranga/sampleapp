@@ -1,0 +1,72 @@
+<div ng-include="'static/new/partials/sidebar.html'"></div>
+            <!-- page content -->
+            <div class="right_col pdnlft0" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> | <a ui-sref="listView({customerName: customerName, service: service})">{{translate(service)}}</a> | {{serviceName || 'New' }}</h2>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>                    
+
+                    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <!-- <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+              <li role="presentation" class="active tabssma"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">{{translate('details')}}</a>
+              </li>
+            </ul> -->
+
+
+            <div id="myTabContent" class="tab-content">
+              <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                <div class="clearfix"></div>
+
+                <form class="form-horizontal form-label-left pdn12" ng-submit="save();">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_content pdn-top15">
+                      <div class="form-group col-sm-6 col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>Customer Name</label>
+                          <input type="text" name="customerName" required class="form-control" ng-model="selectedServiceData.customerName" placeholder="Customer Name" readonly="">
+                        </div>
+                        <div class="form-group">
+                          <label>Host Name</label>
+                          <input type="text" name="hostname" ng-model="selectedServiceData.hostname" required class="form-control" placeholder="Host Name" ng-readonly="editFlag">
+                        </div>
+                        <div class="form-group">
+                          <label>Base DN</label>
+                          <input type="text" name="basedn" ng-model="selectedServiceData.basedn" required class="form-control" placeholder="Base DN">
+                        </div>
+                      </div>
+                      <div class="form-group col-sm-6 col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>Port</label>
+                          <input type="number" name="port" class="form-control" ng-model="selectedServiceData.port" placeholder="Port">
+                        </div>
+                        <div class="form-group">
+                          <label>UID</label>
+                          <input type="text" name="uid" class="form-control" ng-model="selectedServiceData.uid" placeholder="UID">
+                        </div>
+                        <div class="form-group">
+                          <label>Password</label>
+                          <input type="password" name="password" ng-model="selectedServiceData.password" required class="form-control" placeholder="Password">
+                        </div>
+                        <button class="btn btn-success pull-right form-submit" type="submit">Submit</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+                </div>
+            </div>

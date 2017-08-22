@@ -1,0 +1,26 @@
+{
+"dnsReusableDelegationSet":{
+"table":{
+"delegationSetId": "Delegation Set Id",
+"projectName": {"type": "link", "service": "projects", "name": "Project Name"},
+"csp": {"type": "link", "service": "displayCsp", "name": "CSP"},
+"region": {"type": "link", "service": "displayRegion", "name": "Region"},
+"price": "Price",
+"unbilledAmount": "Unbilled Amount",
+"nameServers":"Name Servers",
+"callerReference":"Caller Reference"
+},
+"tab":[
+{"tabName": "General",
+"tabData": [
+{
+"name": "",
+"columns": {
+"buName": {"type": "link", "service": "bus", "name": "BU Name"},
+"accountName": {"type": "link", "service": "accounts", "name": "Account Name"},
+"createdBy": "Created By",
+}
+}]
+}
+
+]}}

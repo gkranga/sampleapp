@@ -1,0 +1,12 @@
+<table class="table" ng-if="table.multipleRows">
+  <thead>
+    <tr>
+      <th ng-repeat="columnKey in table.columns | keys" ng-init="name = table.columns[columnKey]">{{name}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="region in selectedServiceData['regions'] track by $index">
+      <td ng-repeat="columnKey in table.columns | keys">{{region[columnKey]}}</td>
+    </tr>
+  </tbody>
+</table>

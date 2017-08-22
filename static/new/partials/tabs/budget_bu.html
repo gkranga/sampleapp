@@ -1,0 +1,13 @@
+<table class="table"  ng-init="loadbusOfBudget(customerName,selectedRowId)">
+    <thead>
+    <tr>
+        <th ng-repeat="(columnKey,columnvalue) in tabtable.columns | keys" ng-init="name = tabtable.columns[columnvalue]">{{name}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="bus in busOfBudget track by $index">
+        <td ng-repeat="columnKey in tabtable.columns | keys">{{bus}}</td>
+    </tr>
+    </tbody>
+</table>
+<button ng-if="customerBudgets[selectedRowId].isActive == 'yes'" ui-sref="budgetTagView({customerName: customerName, service: service, budgetName: customerBudgets[selectedRowId].budgetName, tagName: tabtable.buttonAction.buttonAction, type:'bus'} )"  class="btn pull-right" >Tag/Untag BU</button>

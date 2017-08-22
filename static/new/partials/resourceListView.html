@@ -1,0 +1,57 @@
+   <div ng-include="'static/new/partials/sidebar.html'"></div>
+  </div>
+</div>
+<div class="right_col pdnlft0" role="main">
+  <div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="x_panel pdntop0">
+          <div class="x_title">
+            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}/{{translate(resourceName)}}</a> </h2>
+            <ul class="nav navbar-right panel_toolbox minwidthauto seachtab">
+               <li class="">
+                <a role="button" ><button class="btn btn-primary btn-success">Start</button></a>
+              </li>
+              <li class="">
+                <a role="button" ><button class="btn btn-primary btn-warning">Stop</button></a>
+              </li>
+              <li class="">
+                <a role="button" ><button class="btn btn-primary btn-danger">Delete</button></a>
+              </li>
+               <li class="">
+                <a title="{{translate('add')}}" ui-sref="resourceAdd({serviceName: master, customerName: customerName, resourceName: resourceName})" role="button" ><button class="btn btn-primary btn-custom">Create</button></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <!-- {{data}} -->
+          <div class="listview-table-wrapper">
+            <table class="table table-responsive" >
+              <thead>
+                <tr>
+                  <th style="cursor:pointer" ng-repeat="(thkey,key) in notSorted(table)" ng-init="name = table[key]"
+
+                   ng-click="sortField(thkey,thkey+'__sort')" >{{objectTransform(name)}}
+                   <!-- <span class="table-sort-icon fa fa-chevron-up" ng-if="test=='DESC'"></span>
+                   <span class="table-sort-icon fa fa-chevron-down" ng-if="test=='ASC'"></span> -->
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="(rowKey,rowData) in data.slice(param1,param2)"  ng-click="selectRowData(rowKey)" ng-class="{'selected':selectedRowId === rowKey}">
+                  <td ng-repeat="(key,value) in notSorted(table)"  ng-init="valuename = value">
+                  <a ng-if="table[value].type=='link'" ui-sref="resources({serviceName:table[value].serviceName, customerName: customerName, resourceName: table[value].resourceName,key:rowData[valuename]})" style="color:blue"> {{rowData[valuename] | limitTo: 80}}</a>
+                  <a ng-if="table[value].type!='link'" >{{rowData[valuename] | limitTo: 80 }}</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+         <pagination total-items="totalItems" ng-model="currentPage" ng-click="pageChange(currentPage)" class="pagination-sm"  items-per-page=" itemsPerPage"></pagination>
+    <div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-include="'static/new/partials/resourcetabs.html'"></div>
+    </div>
+  </div>
+</div>

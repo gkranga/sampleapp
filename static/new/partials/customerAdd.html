@@ -1,0 +1,154 @@
+<div class="col-md-3 left_col" ng-if="isSwa">
+  <div class="left_col scroll-view">
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+      <div class="menu_section">
+        <ul class="nav side-menu">
+          <li>
+            <a id="menu_toggle">
+              <i class="font28 fa fa-bars"></i>
+            </a>
+          </li>
+          <div class="nav_lft_vig" style="overflow-y: auto; overflow-x: hidden;">
+            <ul class="nav nav-list">
+              <li>
+                <label class="tree-toggler nav-header" ng-class="master == 'administrator' ? 'custom-sidebar-select' : 'custom-normal-select'">
+                    <i class="menu_toggle"></i>
+                    {{translate('administration')}} 
+                    <span class="fa fa-chevron-down"></span>
+                </label>
+                <ul class="nav nav-list tree" ng-class="master == 'administrator' ? 'show' : ''">
+                    <li>
+                      <label class="tree-toggler nav-header custom-customer-select">servicewire
+                        <span class="fa fa-chevron-down"></span>
+                      </label>
+                      <ul class="nav nav-list tree show">
+                        <li ng-class="service == 'users' ? 'custom-service-select' : ''">
+                          <a ui-sref="swaListView({service: 'users'})">{{translate('users')}}</a>
+                        </li>
+                        <li ng-class="service == 'customers' ? 'custom-service-select' : ''">
+                          <a ui-sref="swaListView({service: 'customers'})">{{translate('customers')}}</a>
+                        </li>
+                      </ul>
+                    </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <!-- /sidebar menu -->
+  </div>
+</div>
+
+<div ng-if="!isSwa" ng-include="'static/new/partials/sidebar.html'"></div>
+
+            <!-- page content -->
+            <div class="right_col pdnlft0" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> | <a ng-if="!isSwa" ui-sref="listView({customerName: customerName, service: service})">{{translate(service)}}</a><a ng-if="isSwa" ui-sref="swaListView({customerName: customerName, service: service})">{{translate(service)}}</a> | {{serviceName || 'New' }}</h2>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>                    
+
+                    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <!-- <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+              <li role="presentation" class="active tabssma"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">{{translate('details')}}</a>
+              </li>
+            </ul> -->
+
+            <div id="myTabContent" class="tab-content">
+              <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                <div class="clearfix"></div>
+
+                <form class="form-horizontal form-label-left pdn12" ng-submit="save()">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_content pdn-top15">
+                      <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>Customer Name</label>
+                          <input type="text" name="customerName" required class="form-control" ng-model="selectedServiceData.customerName" placeholder="Customer Name" ng-readonly="editFlag">
+                        </div>
+                        <div class="form-group">
+                          <label>Customer Address 1</label>
+                          <input type="text" name="customerAddress1" ng-model="selectedServiceData.customerAddress1" required maxlength="50" class="form-control" 
+                          placeholder="Customer Address 1">
+                        </div>
+                        <div class="form-group">
+                          <label>Customer Address 2</label>
+                          <input type="text" name="customerAddress2" ng-model="selectedServiceData.customerAddress2" maxlength="50" class="form-control" 
+                          placeholder="Customer Address 2">
+                        </div>
+                        <div class="form-group">
+                          <label>Customer City</label>
+                          <input type="text" name="customerCity" ng-model="selectedServiceData.customerCity" required ng-pattern="/^[a-zA-Z\s]*$/" pattern="[A-Za-z ]*" ng-maxlength="20" maxlength="20" class="form-control" 
+                          placeholder="Customer City">
+                        </div>
+                        <div class="form-group">
+                          <label>Customer Phone</label>
+                          <input type="text" name="customerPhone" ng-model="selectedServiceData.customerPhone" required ng-pattern="/^(\d)+$/" ng-required='1' required pattern="[0-9]+" ng-maxlength="20" maxlength="20" class="form-control" 
+                          placeholder="Customer Phone">
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>Customer State</label>
+                          <input type="text" name="customerState" ng-model="selectedServiceData.customerState" required ng-pattern="/^[a-zA-Z\s]*$/" pattern="[A-Za-z ]*" ng-maxlength="20" maxlength="20" class="form-control" 
+                          placeholder="Customer State">
+                        </div>
+                        <div class="form-group">
+                          <label>Customer Country</label>
+                          <input type="text" name="customerCountry" ng-model="selectedServiceData.customerCountry" required ng-pattern="/^[a-zA-Z\s]*$/" pattern="[A-Za-z ]*" ng-maxlength="20" maxlength="20" class="form-control" 
+                          placeholder="Customer Country">
+                        </div>
+                        <div class="form-group">
+                          <label>Customer Zip</label>
+                          <input type="text" name="customerZip" ng-model="selectedServiceData.customerZip" placeholder="Zip Code" class="form-control" ng-pattern="/^(\d)+$/" ng-required='1' required pattern="[0-9]+">
+                        </div>
+                        <div class="form-group">
+                          <label>Customer Email</label>
+                          <input type="email" name="customerEmail" ng-model="selectedServiceData.customerEmail" class="form-control" required placeholder="Customer Email">
+                        </div>
+                        <div class="form-group" ng-if="isSwa">
+                          <p>Customer Status Active: </p>
+                          <input type="radio" name="isActive" value="yes" ng-model="selectedServiceData.isActive" checked required>Yes
+                          <input type="radio" name="isActive" value="no" ng-model="selectedServiceData.isActive">No
+                        </div>
+                        <button class="btn btn-success pull-right form-submit" type="submit">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <!-- <div class="col-md-12 col-sm-12 col-xs-12" ng-if="isSwa">
+                  <div class="x_content">
+                    <h3>Tag CA:</h3>
+                    <div class="form-group col-md-6">
+                      <label>User:</label>
+                      <select class="form-control" ng-model="taggedUser">
+                        <option ng-repeat="user in serviceData.users" value="{{user.uid}}">{{user.fname}} {{user.sname}}</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <p>&nbsp;</p>
+                      <button class="btn btn-success" type="button" ng-click="tagCa()">Tag</button>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+                </div>
+            </div>

@@ -1,0 +1,50 @@
+   <div ng-include="'static/new/partials/sidebar.html'"></div>
+  </div>
+</div>
+<!-- page content -->
+
+<div class="right_col pdnlft0" role="main">
+  <div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="x_panel pdntop0">
+          <div class="x_title">
+            <h2 class="pdntp10"><a ui-sref="dashboard">dummydata/test</a> </h2>
+            <ul class="nav navbar-right panel_toolbox minwidthauto seachtab">
+              <li class="">
+                <a title="{{translate('add')}}" ui-sref="resourceAdd({serviceName: master, customerName: customerName, resourceName: resourceName})" role="button" ><button class="btn btn-primary btn-custom">Create</button></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="listview-table-wrapper">
+            <table class="table table-responsive" >
+              <thead>
+                <tr>
+                  <th style="cursor:pointer" ng-repeat="(thkey,key) in [1,2,3]"   ng-init="name = key"
+                   ng-click="sortField(thkey,thkey+'__sort')" >{{objectTransform(name)}} {{}}
+                   <span class="table-sort-icon fa fa-chevron-up" ng-if="test=='DESC'"></span>
+                   <span class="table-sort-icon fa fa-chevron-down" ng-if="test=='ASC'"></span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="(rowKey,rowData) in [1,2,3]"  ng-click="selectRowData(rowKey)" ng-class="{'selected':selectedRowId === rowKey}">
+                  <td ng-repeat="(key,value) in [1,2,3]" >
+                  <a style="color:blue">{{rowData[key] | limitTo: 80}}</a>
+                  <!-- ng-if="value.type=='link'" ui-sref="details({customerName: customerName, service: value.service, serviceName:rowData[key] })" -->
+                  <a  >{{rowData[key] | limitTo: 80 }}</a>
+                  <!-- ng-if="value.type!='link'" -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+         <pagination total-items="totalItems" ng-model="currentPage" ng-click="pageChange(currentPage)" class="pagination-sm" items-per-page="itemsPerPage"></pagination>  
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-include="'static/new/partials/notificationSettingsTabs.html'"></div>
+    </div>
+  </div>
+</div>

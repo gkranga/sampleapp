@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include head.html %>
+</head>
+<body class="login-body">
+  <div class="login-logo">
+    <img src="static/img/logo-icon.png" alt="Service Wire" width="200px"/><h2></h2>
+  </div>
+    <h2 class="form-heading">login</h2>
+    <div class="container log-row">
+      <form class="form-signin">
+        <div class="login-wrap">
+          <input type="text" name="uid" class="form-control" placeholder="User ID" autofocus>
+          <input type="password" name="password" class="form-control" placeholder="Password">
+          <button class="btn btn-lg btn-success btn-block" type="submit">LOGIN</button>
+          <label class="checkbox-custom check-success">
+            <a class="pull-right" data-toggle="modal" href="#forgotPass"> Forgot Password?</a>
+          </label>
+        </div>
+      </form>
+    </div>
+    <% include scripts.html %>
+  </body>
+</html>

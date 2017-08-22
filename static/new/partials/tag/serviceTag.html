@@ -1,0 +1,45 @@
+        <div class="x_panel pdntop0">
+          <div class="x_title" ng-hide="isSwa">
+            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> / <a ui-sref="listView({customerName: customerName, service: service})">{{translate(service)}}</a> / {{serviceToBeTagged}} / {{tagName}}</h2>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content pdn-top10">
+            <table class="table table-responsive">
+              <thead>
+              	<tr class="table_filter">
+                  <th></th>
+                  <th></th>
+                  <!-- <th ng-repeat="columnKey in tagFormat[serviceToBeTagged] | keys" ng-init="columnData = tagFormat[serviceToBeTagged][columnKey]">
+                  	<input ng-if="columnData.type == 'text'" ng-model="search[columnData.key]" class="form-control" type="text" placeholder="Start Typing" ng-change="getFilteredService()">
+                  	<select ng-if="columnData.type == 'select'" ng-model="search[columnData.key]" class="form-control" ng-change="getFilteredService()">
+                  		<option ng-selected="true" value="">Select a value</option>
+                      <option ng-repeat="option in columnData.options" ng-value="option.value">{{option.displayName}}</option>
+                  	</select>
+                	</th> -->
+                  <th>
+                    <select ng-model="newRole" ng-init="newRole = role" class="form-control" ng-change="getFilteredService(newRole)" ng-options="option.value as option.name for option in options">
+                      <!-- <option ng-selected="true" value="{{role}}">Tagged</option>
+                      <option value="!{{role}}">UnTagged</option> -->
+                    </select>
+                  </th>
+              	</tr>
+                <tr class="table_content">
+                  <th ng-click="toggleAllService()"><input type="checkbox" ng-model="allSelected" ng-checked="isCheckedService()"></th>
+                  <th ng-repeat="columnKey in tagFormat[serviceToBeTagged] | keys" ng-init="columnData = tagFormat[serviceToBeTagged][columnKey]">{{columnData.displayName}}</th>
+                  <th>Tagged/Untagged</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-ng-repeat="entity in filteredServices" ng-click="toggle(entity)">
+                  <td><input type="checkbox" data-ng-model="checkboxModel[entity]" ng-value="entity" ng-checked="exists(entity)"></td>
+                  <td>{{entity}}</td>
+                  <td>{{newRole == role ? 'Tagged' : 'Untagged'}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="pull-right">
+              <button class="btn btn-primary btn-custom" ng-disabled="newRole == role" ng-click="tagService()">Tag</button>
+              <button class="btn untag-btn btn-custom" ng-disabled="newRole == '!'+role" ng-click="untagService()">Untag</button>
+            </div>
+          </div>
+        </div>

@@ -1,0 +1,23 @@
+angular.module('swire').config(function($stateProvider,$httpProvider,$locationProvider){
+    $stateProvider.state('accountCardView',{
+      url:'/account',
+      templateUrl:'/static/new/partials/accountCardView.html',
+      controller:'AccountCardController'
+    }).state('accountListView',{
+      url:'/account/list',
+      templateUrl:'/static/new/partials/accountListView.html',
+      controller:'AccountListController'
+    }).state('accountDetails',{
+      url:'/account/:name',
+      templateUrl:'/static/new/partials/accountDetails.html',
+      controller:'AccountDetailsController'
+    }).state('accountAdd',{
+      url:'/account/add',
+      templateUrl:'/static/new/partials/addAccount.html',
+      controller:'AccountAddController'
+    }).state('accountEdit',{
+      url:'/account/edit/:name',
+      templateUrl:'/static/new/partials/addAccount.html',
+      controller:'AccountEditController'
+    })
+})

@@ -1,0 +1,1 @@
+angular.module('swire',['ui.router', 'ngResource', 'datatables', 'ngCsvImport', 'naif.base64', 'ng-duallist', 'formly', 'formlyBootstrap', 'mgo-angular-wizard', 'ng-sweet-alert', '720kb.datepicker','ui.bootstrap','chart.js','angularMoment', 'angularjs-dropdown-multiselect']);

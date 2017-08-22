@@ -1,0 +1,51 @@
+<div ng-if="!isSwa" ng-include="'static/new/partials/sidebar.html'"></div>
+<div class="right_col pdnlft0" role="main">
+  <div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="x_panel pdntop0" >
+          <div class="x_title>
+            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> / <a ui-sref="budget-list({customerName: customerName, service: service})">{{translate(service)}}</a>
+            / {{tagName}}
+            </h2>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content pdn-top10">
+            <table class="table table-responsive">
+              <thead>
+                <tr class="table_filter">
+                   <!-- <th width="10%"></th> -->
+                   <th></th>
+                  <th width="20%">
+                    <select ng-model="newRole" class="form-control" ng-change="getFilter(newRole)">
+                    <option value="">Select Option</option>
+                    <option ng-repeat="option in options" value="{{option.value}}">{{option.name}}</option>
+                    </select>
+                  </th>
+                </tr>
+
+                <tr class="table_content">
+                  <!-- <th ng-click="toggleAll()"><input type="checkbox" ng-model="allSelected" ng-checked="isChecked()"></th> -->
+                  <th ng-repeat="columnKey in tagFormat[type] | keys" ng-init="columnData = tagFormat[type][columnKey]">{{columnData.displayName}}</th>
+                  <th>Tagged/Untagged</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-ng-repeat="(rowKey,bus) in filteredBuBudgets" ng-click="selectRowData(rowKey)" ng-class="{'selected':selectedRowId === rowKey}">
+                  <!-- <td><input type="checkbox" data-ng-model="checkboxModel[user.uid]" ng-value="user.uid" ng-checked="exists(user.uid)"></td> -->
+                  <td >{{bus.buname}}</td>
+                  <td>{{bus.tagged == true ? 'Tagged' : 'Untagged'}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="pull-right" ng-if="newRole !== undifined">
+              <button class="btn btn-primary btn-custom" ng-disabled="newRole == 'true'" ng-click="tag()">Tag</button>
+              <button class="btn untag-btn btn-custom" ng-disabled="newRole == 'false'" ng-click="untag()">Untag</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /page content -->

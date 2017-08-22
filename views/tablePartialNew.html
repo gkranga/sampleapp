@@ -1,0 +1,50 @@
+  <table class="table data-table row-details-data-table" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th></th>
+        <%
+        Object.keys(adminFormat[service]['table']).forEach(function(column) {
+        %>
+        <th><%= adminFormat[service]['table'][column] %></th>
+        <%
+        })
+        %>
+      </tr>
+    </thead>
+    <tbody>
+    <%
+      data.forEach(function(subData) {
+        if ((subData['actions'].join().toLowerCase().indexOf('read') != -1) || (service == 'customers')) {
+    %>
+      <tr>
+        <td class="details-control" data-content="<%= JSON.stringify(subData) %>" data-service="<%= service %>"></td>
+        <%
+          Object.keys(adminFormat[service]['table']).forEach(function(column) {
+            if (column != 'actions') {
+        %>
+        <td> <%= subData[column] %> </td>
+        <%
+            }
+          })
+        %>
+        <td>
+          <select class="form-control form-trigger">
+            <option value="" selected disabled>Actions</option>
+        <%
+          subData['actions'].forEach(function(acts) {
+            if (acts.indexOf('read') == -1 && acts.indexOf('create') == -1 && acts.indexOf('list') == -1) {
+        %>
+            <option value="<%= acts %>"><%= acts %></option>
+        <%
+            }
+          })
+        %>
+          </select>
+        </td>
+      </tr>
+    <%
+          }
+        })
+    %>
+    </tbody>
+  </table>

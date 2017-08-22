@@ -1,0 +1,77 @@
+<!-- page content -->
+<div class="right_col art_board_2" role="main">
+  <div class="row">
+    <div class="page-title">
+      <div class="title_left col-md-6">
+        <h2>{{ translate('profile') | uppercase }}</h2>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-md-12">
+      <form class="form-horizontal form-label-left" ng-submit="formSubmit()">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="x_content">
+            <div class="form-group">
+              <label for="fullname">{{translate('userUID')}} :</label>
+              <input type="email" class="form-control" ng-model="user.uid" required ng-required="true" readonly />
+            </div>
+            <div class="form-group">
+              <label for="fullname">{{translate('userFirstname')}} :</label>
+              <input type="text" class="form-control" required maxlength="20" ng-maxlength="20" ng-model="user.fname" ng-required="true"/>
+            </div>
+            <div class="form-group">
+              <label for="fullname">{{translate('userLastname')}} :</label>
+              <input type="text" class="form-control" required maxlength="20" ng-maxlength="20" ng-model="user.sname" ng-required="true"/>
+            </div>
+            <div class="form-group">
+              <label for="fullname">{{translate('userAddress')}} :</label>
+              <input type="text" class="form-control" required maxlength="50" ng-maxlength="50" ng-model="user.userAddress" ng-required="true"/>
+            </div>
+            <div class="form-group">
+              <label for="fullname">{{translate('userCity')}} :</label>
+              <input type="text" class="form-control" ng-model="user.userCity" ng-pattern="/^[a-zA-Z\s]*$/" pattern="[A-Za-z ]*" ng-maxlength="20" maxlength="20" title="only characters" required ng-required="true"/>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="x_content">
+            <div class="form-group">
+              <label for="fullname">{{translate('userCountry')}} :</label>
+              <input type="text" class="form-control" pattern="[A-Za-z ]*" ng-pattern="/^[a-zA-Z\s]*$/" maxlength="20" ng-maxlength="20" title="only characters" required ng-model="user.userCountry" ng-required="true"/>
+            </div>
+            <div class="form-group">
+              <label for="fullname">{{translate('userZip')}} :</label>
+              <input type="text" class="form-control" required max="9999999999" ng-model="user.userZip" ng-required="true"/>
+            </div>
+            <div class="form-group">
+              <label for="fullname">{{translate('userPhone')}} :</label>
+              <input type="text" class="form-control" required max="999999999999999" ng-model="user.userPhone" ng-required="true"/>
+            </div>
+            <div class="form-group">
+              <label for="heard">{{translate('userLanguage')}} :</label>
+              <select class="form-control" ng-model="user.language" required ng-required="true">
+                <option value="" disabled selected>Choose..</option>
+                <option value="english">English</option>
+                <option value="french">French</option>
+                <option value="spanish">Spanish</option>
+                <option value="portugese">Portugese</option>
+                <option value="german">German</option>
+                <option value="japanese">Japanese</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-success">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row pull-right profile_img_container">
+      <img class="img img-responsive img-circle pull-right profilePic" src="/static/uploads/{{user.uid}}" onerror="if (this.src != '/static/img/avatar-mini.jpg') this.src = '/static/img/avatar-mini.jpg';" alt="">
+      <form class="pdn12 profile_edit_icon" id="imgForm">
+        <a href="javascript:void(0);" onclick="$('#new_avatar').click();"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        <input type="file" accept=".jpg,.png" name="avatar" id="new_avatar" onchange="angular.element(this).scope().changeImage(this)" class="hidden">
+      </form>
+    </div>
+  </div>
+</div>

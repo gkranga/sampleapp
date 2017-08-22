@@ -1,0 +1,202 @@
+{
+	"adminServices":
+	[ 
+		{
+			"serviceName":"users",
+			"roles": ["swa", "ca", "bua", "aa", "pa"],
+			"actions":[
+				{
+					"actionName":"createUser",	
+					"roles": ["swa", "ca", "bua", "aa", "pa"]
+				},
+				{
+					"actionName":"updateUser",	
+					"roles": ["swa", "ca", "bua", "aa", "pa"]
+				},
+				{
+					"actionName":"readUser",	
+					"roles": ["swa", "ca", "bua", "aa", "pa"]
+				},
+				{
+					"actionName":"tagPm",	
+					"roles": ["swa", "ca"]
+				},
+				{
+					"actionName":"tagCa",	
+					"roles": ["swa", "ca"]
+				},
+				{
+					"actionName":"tagBua",	
+					"roles": ["ca", "bua"]
+				},
+				{
+					"actionName":"tagAarole",	
+					"roles": ["ca", "bua"]
+				},
+				{
+					"actionName":"tagAa",	
+					"roles": ["aa"]
+				},
+				{
+					"actionName":"tagPa",	
+					"roles": ["ca", "bua", "aa", "pa"]
+				},
+				{
+					"actionName":"tagPu",	
+					"roles": ["ca", "bua", "aa", "pa"]
+				},
+				{
+					"actionName":"importUser",	
+					"roles": ["ca", "bua", "aa", "pa"]
+				}
+			]
+		}, 
+		{
+			"serviceName":"bus",
+			"roles": ["swa", "ca", "bua", "aa", "pa", "pu"],		
+			"actions":[
+				{
+					"actionName":"createBu",	
+					"roles": ["ca"]
+				},
+				{
+					"actionName":"updateBu",	
+					"roles": ["ca", "bua"]
+				},
+				{
+					"actionName":"readBu",	
+					"roles": ["swa", "ca", "bua", "aa", "pa", "pu"]
+				},
+				{
+					"actionName":"tagBu",	
+					"roles": ["ca", "bua"]
+				}
+			]
+		}, 
+		{
+			"serviceName":"accounts",
+			"roles": ["swa", "ca", "bua", "aa", "pa", "pu"],
+			"actions":[
+				{
+					"actionName":"createAccount",	
+					"roles": ["aa"]
+				},
+				{
+					"actionName":"updateAccount",	
+					"roles": ["aa"]
+				},
+				{
+					"actionName":"readAccount",	
+					"roles": ["aa"]
+				},
+				{
+					"actionName":"tagAccount",	
+					"roles": ["aa"]
+				}
+			]
+		},
+		{
+			"serviceName":"projects",
+			"roles": ["swa", "ca", "bua", "aa", "pa", "pu"],
+			"actions":[
+				{
+					"actionName":"createProject",	
+					"roles": ["ca", "bua", "aa", "pa"]
+				},
+				{
+					"actionName":"updateProject",	
+					"roles": ["ca", "bua", "aa", "pa"]
+				},
+				{
+					"actionName":"readProject",	
+					"roles": ["swa", "ca", "bua", "aa", "pa", "pu"]
+				},
+				{
+					"actionName":"tagProject",	
+					"roles": ["ca", "bua", "aa"]
+				}
+			]
+		}, 
+		{
+			"serviceName":"ldapConfigs",
+			"roles": ["ca"],
+			"actions":[
+				{
+					"actionName":"createLdapConfig",	
+					"roles": ["ca"]
+				},
+				{
+					"actionName":"updateLdapConfig",	
+					"roles": ["ca"]
+				},
+				{
+					"actionName":"readLdapConfig",	
+					"roles": ["ca"]
+				}
+			]
+		},
+		{
+			"serviceName":"displayCsps",
+			"roles": ["swa", "ca", "bua", "aa", "pa", "pu"],
+			"actions":[
+				{
+					"actionName":"createDisplaycsp",	
+					"roles": ["swa", "ca"]
+				},
+				{
+					"actionName":"updateDisplaycsp",	
+					"roles": ["swa", "ca"]
+				},
+				{
+					"actionName":"readDisplaycsp",	
+					"roles": ["swa", "ca", "bua", "aa", "pa", "pu"]
+				},
+				{
+					"actionName":"tagDisplaycsp",	
+					"roles": ["swa", "ca"]
+				}
+			]
+		}, 
+		{
+			"serviceName":"displayRegions",
+			"roles": ["swa", "ca", "bua", "aa", "pa", "pu"],
+			"actions":[
+				{
+					"actionName":"createDisplayregion",	
+					"roles": ["swa", "ca"]
+				},
+				{
+					"actionName":"updateDisplayregion",	
+					"roles": ["swa", "ca"]
+				},
+				{
+					"actionName":"readDisplayregion",	
+					"roles": ["swa", "ca", "bua", "aa", "pa", "pu"]
+				},
+				{
+					"actionName":"tagDisplayregion",	
+					"roles": ["swa", "ca"]
+				}
+			]
+		} 
+	],
+	"resources":
+	[
+		{
+			"serviceName":"systems",
+			"roles": ["swa", "ca", "bua", "aa", "pa", "pu"]
+		},
+		{
+			"serviceName":"storage",
+			"roles": ["swa", "ca", "bua", "aa", "pa", "pu"]
+		},
+		{
+			"serviceName":"network",
+			"roles": ["swa", "ca", "bua", "aa", "pa", "pu"]
+		},
+		{
+			"serviceName":"security",
+			"roles": ["swa", "ca", "bua", "aa", "pa", "pu"]
+		},
+	]
+}

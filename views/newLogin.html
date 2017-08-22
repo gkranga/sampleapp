@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="static/new/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/new/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="static/new/css/overwritten.css">
+    <link href="/static/new/css/toastr.css" rel="stylesheet">
+	<h1>"The IP Address is: "  <%= ipaddr %></h1>
+</head>
+
+<body class="nav-md">
+    <!-- Header  -->
+
+    <div class="container body">
+        <div class="main_container">
+            <!-- page content -->
+            <div class="right_col art_board_2 login_screen" role="main">
+                <div class="col-md-12 col-sm-12 login_screen_cont">
+                    <div class="col-md-6 col-sm-6 col-xs-12 login_lft_logo">
+                        <div>
+                            <img src="static/new/images/logo.png">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 login_ryt_form">
+                        <div>
+                            <form class="form-signin">
+                                <div class="col-md-8 col-sm-8 col-xs-12 mgn_btm15">
+                                    <input type="email" id="uid" name="uid" class="form-control" placeholder="Username" onchange="resetLoginForm()">
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn verification-btn pull-left" type="button" onclick="checkUserLocal()"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-12 mgn_btm15 password hidden">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-12 mgn_btm15 local-login hidden">
+                                    <button type="button" class="login_local_btn login_btn">Login </button>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-12 mgn_btm15 ldap-login hidden">
+                                    <button type="button" class="login_ldap_btn login_btn">Login </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    &copy; Ranga GK
+                </div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+    <% include scripts.html %>
+</body>
+</html>

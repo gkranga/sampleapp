@@ -1,0 +1,8 @@
+{
+	"host" : "smtp.gmail.com",
+	"port" : 465,
+	"ssl" : true,
+	"username" : "admin@servicewire.io",
+	"api_key" : "key-61c3bcd1ba53effc3f13df2a7aba5620",
+	"domain" : "mail.servicewire.io"
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/new/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/new/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/static/new/css/overwritten.css">
+    <link href="/static/new/css/toastr.css" rel="stylesheet">
+    <title>Servicewire - Set Password</title>
+</head>
+
+<body class="nav-md">
+    <!-- Header  -->
+
+    <div class="container body">
+        <div class="main_container">
+            <!-- page content -->
+            <div class="right_col art_board_2 login_screen" role="main">
+                <div class="col-md-12 col-sm-12 login_screen_cont">
+                    <div class="col-md-6 col-sm-6 col-xs-12 login_lft_logo">
+                        <div>
+                            <img src="/static/new/images/logo.png">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 login_ryt_form">
+                        <div>
+                        <% if (success) { %>
+                            <form class="form-verify">
+                                <input type="hidden" name="hash" value="<%= hash %>">
+                                <div class="col-md-8 col-sm-8 col-xs-12 mgn_btm15">
+                                    <input type="password" required minlength=5 name="password" id="verifypassword" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-12 mgn_btm15 password">
+                                    <input type="password" name="re-password" required data-rule-equalTo="#verifypassword" id="password_confirm" class="form-control" placeholder="Confirm Password">
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-12 mgn_btm15">
+                                    <button type="button" class="verify-trigger login_btn">Set Password</button>
+                                </div>
+                            </form>
+                        <% } else { %>
+                        <h2 class="form-heading">Token Expired</h2>
+                        <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    Copyright &copy; 2017 Pipegrep Technologies.
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+    <% include scripts.html %>
+</body>
+</html>

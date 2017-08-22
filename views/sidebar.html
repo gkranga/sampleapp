@@ -1,0 +1,32 @@
+<% if (user.isSwa == 'yes') { %>
+<ul class="nav nav-pills nav-stacked side-navigation">
+  <li>
+    <h3 class="navigation-title active">Admin Services</h3>
+  </li>
+  <li class="menu-list nav-active" data-permitted-actions="<%= JSON.stringify(customerActionsForSwa+userActonsForSwa) %>"><a href="javascript:void(0);" data-customer-name="servicewire" data-roles="['SWA']" data-id="customers"><i class="fa fa-th-list"></i><span>servicewire</span></a>
+    <ul class="child-list">
+      <li><a href="#" data-parent="adminservice" data-customer-name="servicewire" data-roles="['SWA']" data-id="customers"> Customers</a></li>
+      <li><a href="#" data-parent="adminservice" data-customer-name="servicewire" data-roles="['SWA']" data-id="users"> Users</a></li>
+    </ul>
+  </li>
+</ul>
+<% } else { %>
+<!--sidebar nav start-->
+<ul class="nav nav-pills nav-stacked side-navigation">
+  <li>
+    <h3 class="navigation-title active">Admin Services</h3>
+  </li>
+  <% sidebar.forEach(function(customer) { %>
+  <li class="menu-list nav-active" data-permitted-actions="<%= JSON.stringify(customer.actionList) %>"><a href="javascript:void(0);" data-customer-name="<%= customer.name %>" data-roles="<%= JSON.stringify(customer.role) %>" data-id="customers"><i class="fa fa-th-list"></i><span><%= customer.name %></span></a>
+    <ul class="child-list">
+    <%
+      customer.service.forEach(function(newKey) {
+    %>
+      <li><a href="#" data-parent="adminservice" data-customer-name="<%= customer.name %>" data-roles="<%= JSON.stringify(customer.role) %>" data-id="<%= newKey %>"> <%= newKey %></a></li>
+    <% }); %>
+    </ul>
+  </li>
+  <% }); %>
+</ul>
+<!--sidebar nav end-->
+<% } %>

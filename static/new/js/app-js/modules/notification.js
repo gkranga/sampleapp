@@ -1,0 +1,12 @@
+angular.module('swire').config(function($stateProvider,$httpProvider,$locationProvider){
+    $stateProvider.state('manageNotification',{
+      url:'/notification-view',
+      templateUrl:'/static/new/partials/notificationAdminView.html',
+      controller:'ManageNotificationController'
+    })
+    stateProvider.state('notificationSettings',{
+      url:'/notification-settings',
+      templateUrl:'/static/new/partials/notificationUserView.html',
+      controller:'NotificationDetailsController'
+    })
+})

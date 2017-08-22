@@ -1,0 +1,33 @@
+{
+  "name": "api-service-NATS",
+  "version": "0.0.0",
+  "description": "Node service for NATS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "NATS",
+    "service"
+  ],
+  "author": "Vignesh Nallamad",
+  "license": "UNLICENSE",
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "config": "~1.20.4",
+    "cookie-parser": "^1.4.1",
+    "crypto": "0.0.3",
+    "ejs": "^2.4.1",
+    "express": "^4.12.3",
+    "express-session": "^1.13.0",
+    "hogan-express": "*",
+    "ldapjs": "^1.0.0",
+    "moment": "^2.12.0",
+    "multer": "~1.1.0",
+    "mysql": "^2.10.2",
+    "q": "^1.4.1",
+    "request": "^2.55.0",
+    "sequelize": "^3.18.0",
+    "sequelize-cli": "~2.4.0"
+  }
+}

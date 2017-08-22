@@ -1,0 +1,46 @@
+-<div class="details-btm-section resource-tabs">
+    <div class="x_panel" >
+      <div class="" role="tabpanel" data-example-id="togglable-tabs" >
+        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist" >
+          <li role="presentation" ng-repeat="(key,tab) in tabs" >
+          <a role="tab" data-toggle="tab" aria-expanded="true" ng-click="tabDetails(tab,tab.tabName,tab.isTable)">
+            <button class="btn btn-default list-view-tabs" ng-style="{'font-weight': isTabActive(tab.tabName)}">{{tab.tabName}}</button>
+          </a>
+          </li>
+        </ul>
+         <div id="myTabContent" class="tab-content" ng-if="tabTableView">
+          <ul class="nav navbar-right panel_toolbox minwidthauto editsave_btns" >
+            <li class="mgn_ryt8 mgntp7">
+              <!-- <a title="{{translate('edit')}}" href="javascript:void(0);" ui-sref="edit({customerName: customerName, service:service, serviceName: selectedServiceData[serviceSingularName]})" role="button" >
+                <i class="font18px fa fa-edit"></i>
+              </a> -->
+            </li>
+          </ul>
+          <div ng-repeat="tables in selectedTabData">
+        <table  ng-if="valIsObjectOrNot(tables)" ng-repeat="(key,table) in tables"  class="table table-responsive"  style="table-layout: fixed;">
+          <thead>
+            <caption style="font-weight:bold" ng-if="table.name" >{{objectTransform(table.name)}} </caption>
+            <caption style="font-weight:bold" ng-if="!table.name" ></caption>
+            <tr>
+              <th ng-repeat="(columnKey,column) in table.columns" style="background:#606060;color:#fff">{{objectTransform(column)}}</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="trdata in (table.name)?dataFortable[mappedTabTableName(table.name)]:dataFortable[tabtbName]">
+             <tr ng-repeat="tableRow in trdata track by $index" ng-if="isObject(tableRow)">
+              <td ng-repeat="tdval in tableRow | keys">{{tableRow[tdval]}}</td>
+           </tr>
+          </tbody>
+        </table>
+      </div>          
+         </div>
+      <div class="tab-content" ng-if="!tabTableView">
+        
+      <ul class="list-group">
+        <li class= "list-group-item" ng-repeat="(key,values) in selectedTabData['tabData'][0].columns" ng-if="!valIsObjectOrNot(values)" > <TabDataspan style="font-weight: bold;">{{values}} :</span><span ng-if="key === 'timeStamp' || key === 'createdTime' || key === 'creationDate'"> {{dataFortable[tabtbName][0][0][key] | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        <span ng-if="!(key === 'timeStamp' || key === 'createdTime' || key === 'creationDate')"> {{dataFortable[tabtbName][0][0][key]}}</span></li> 
+      </ul>
+      <button class="btn pull-right" ng-click="tagProjects(otherDetails.uniqueKey,data[selectedRowId][otherDetails.uniqueKey])" >Tag/Untag Projects</button>
+    </div>
+      </div>
+    </div>
+  </div>

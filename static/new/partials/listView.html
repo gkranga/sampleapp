@@ -1,0 +1,42 @@
+<div ng-include="'static/new/partials/sidebar.html'"></div>
+
+<!-- page content -->
+
+
+<div class="right_col pdnlft0" role="main">
+  <div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="x_panel pdntop0">
+          <div class="x_title">
+            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> / <a ui-sref="listView({customerName: customerName, service: service})">{{translate(service)}}</a></h2>
+            <ul class="nav navbar-right panel_toolbox minwidthauto seachtab">
+              <li class="" ng-if="permissions.create">
+                <a title="{{translate('add')}}" href="javascript:void(0);" ui-sref="add({customerName: customerName, service:service})" role="button" ><button class="btn btn-primary btn-custom">Create</button></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content text-center" ng-if="!initComplete"><img src="static/new/images/0.gif" width="200" height="200"></img></div>
+          <div class="x_content" ng-if="permissions.read && initComplete && serviceData[customerName][service].length">
+            <table class="table table-responsive" datatable="ng" dt-options="dtOptions" dt-instance="dtInstanceCallback">
+              <thead>
+                <tr>
+                  <th ng-repeat="key in keyMapper[service]['table'] | keys" ng-init="name = keyMapper[service]['table'][key]" ng-if="key!='actions'" ng-hide="getTypeObject(name)">{{name}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="rowData in serviceData[customerName][service]" ng-click="setSelectedRow(rowData)" ng-class="rowData === selectedServiceData ? 'selected' : ''">
+                  <td ng-repeat="key in keyMapper[service]['table'] | keys" ng-init="name = rowData[key]" ng-if="key!='actions'" ng-hide="getTypeObject(name)">{{name}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-if="initComplete && serviceData[customerName][service].length" ng-include="'static/new/partials/tabs.html'"></div>
+    </div>
+  </div>
+</div>
+<!-- /page content -->

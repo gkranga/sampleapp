@@ -1,0 +1,44 @@
+<div ng-include="'static/new/partials/sidebar.html'"></div>
+
+<!-- page content -->
+<div class="right_col pdnlft0" role="main">
+  <div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="x_panel pdntop0">
+          <div class="x_title">
+            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> / <a ui-sref="listView({customerName: customerName, service: service})">{{translate(service)}}</a></h2>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content" ng-if="permissions.read">
+            <table class="table table-responsive">
+              <thead>
+              <tr class="table_filter">
+                  <th></th>
+                  <th><input class="form-control" type="text" placeholder="Click or Start Typing"></th>
+              </tr>
+                <tr class="table_content">
+                  <th><input type="checkbox" name=""></th>
+                  <th>Instance Family</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" name=""></td>
+                  <td>Mark</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="pull-right">
+              <button class="btn btn-primary btn-custom">Tag</button>
+              <button class="btn untag-btn btn-custom">Untag</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- /page content -->

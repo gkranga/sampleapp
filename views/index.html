@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include head.html %>
+</head>
+
+<body class="sticky-header">
+
+  <section>
+    <!-- sidebar left start-->
+    <div class="sidebar-left">
+      <!--responsive view logo start-->
+      <div class="logo dark-logo-bg visible-xs-* visible-sm-*">
+        <a href="index.html">
+          <img src="static/img/logo-icon.png" alt="<%= title %>">
+          <!--<i class="fa fa-maxcdn"></i>-->
+          <span class="brand-name"></span>
+        </a>
+      </div>
+      <!--responsive view logo end-->
+
+      <div class="sidebar-left-info">
+        <!-- visible small devices start-->
+        <div class=" search-field">  </div>
+        <!-- visible small devices end-->
+
+        <!-- sidebar partial -->
+        <% include sidebar.html %>
+      </div>
+    </div>
+    <!-- sidebar left end-->
+
+    <!-- body content start-->
+    <div class="body-content" style="min-height: 1000px;">
+
+      <!-- header section start-->
+      <div class="header-section">
+
+        <!--logo and logo icon start-->
+        <div class="logo dark-logo-bg hidden-xs hidden-sm">
+          <a href="index.html">
+            <img src="static/img/logo-icon.png" alt="<%= title %>">
+            <!--<i class="fa fa-maxcdn"></i>-->
+            <span class="brand-name"></span>
+          </a>
+        </div>
+
+        <div class="icon-logo dark-logo-bg hidden-xs hidden-sm">
+          <a href="index.html">
+            <img src="static/img/logo-icon.png" width="50px" alt="<%= title %>">
+            <!--<i class="fa fa-maxcdn"></i>-->
+          </a>
+        </div>
+        <!--logo and logo icon end-->
+
+        <!--toggle button start-->
+        <a class="toggle-btn"><i class="fa fa-outdent"></i></a>
+        <!--toggle button end-->
+
+
+        <div class="notification-wrap">
+          <!-- right notification -->
+          <%- include notification.html %>
+        </div>
+
+      </div>
+      <!-- header section end-->
+
+      <!-- page head start-->
+      <div class="page-head">
+        <h3 class="m-b-less">
+          <span class="service-name"><%= selected %></span>
+          <div class="pull-right col-sm-2">
+            <a href="javascript:void(0)" class="btn btn-primary pull-right form-trigger" data-value="createBu">Create</a>
+          </div>
+        </h3>
+      </div>
+      <!-- page head end-->
+      <input type="hidden" id="selectedCustomerName" value="">
+      <input type="hidden" id="adminFormat" value="<%= JSON.stringify(adminFormat) %>">
+      <!--body wrapper start-->
+      <div class="wrapper">
+        <div class="row">
+          <div class="col-sm-12">
+            <section class="panel">
+            <!-- table partial -->
+            </section>
+            <% include table.html %>
+          </div>
+        </div>
+      </div>
+      <!--body wrapper end-->
+
+
+<!--footer section start-->
+<footer>
+  2016 &copy; <%= title %>.
+</footer>
+<!--footer section end-->
+
+</div>
+<!-- body content end-->
+</section>
+<!-- form partials-->
+<% include ../partials/forms/forms.html %>
+<% include profile.html %>
+<!-- scripts partials-->
+<% include scripts.html %>
+</body>
+</html>

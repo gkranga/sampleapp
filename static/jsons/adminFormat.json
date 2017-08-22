@@ -1,0 +1,574 @@
+{
+  "customers":{
+    "table":{
+      "customerName":"Customer Name",
+      "customerEmail":"Email Id",
+      "isActive":"Is Active ?",
+      "customerPhone":"Phone",
+      "customerCity":"City",
+      "customerCountry":"Country"
+    },
+    "tab":[
+      {
+        "tabName":"Details",
+        "tabSlug":"general",
+        "actionToCheck":"readCustomer",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "customerAddress1":"Address 1",
+              "customerAddress2":"Address 2",
+              "customerState":"State",
+              "customerZip":"Zip Code",
+              "createdUser":"Created By"
+            },
+            "multipleRows":false
+          }
+        ]
+      },
+      {
+        "tabName":"Customer Admins",
+        "tabSlug":"customerAdmins",
+        "actionToCheck":"readCustomer",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "fname":"First Name",
+              "sname":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"CA",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagCa", "buttonName": "Tag/Untag CA"}]
+          }
+        ]
+      },
+      {
+        "tabName":"Account Admins",
+        "tabSlug":"accountAdminsCustom",
+        "actionToCheck":"readAccount",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "fname":"First Name",
+              "sname":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"AA",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagAaRole", "buttonName": "Tag/Untag AA"}]
+          }
+        ]
+      },
+      {
+        "tabName":"Financial Admins",
+        "tabSlug":"financialAdmins",
+        "actionToCheck":"readAccount",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "fname":"First Name",
+              "sname":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"FA",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagFaRole", "buttonName": "Tag/Untag FA"}]
+          }
+        ]
+      }
+    ]
+  },
+  "users":{
+    "table":{
+      "uid":"User Id",
+      "fname":"First Name",
+      "sname":"Last Name",
+      "isActive":"Is Active ?",
+      "isLocal":"Is Local ?",
+      "emailValidated":"Email Validated ?"
+    },
+    "tab":[
+      {
+        "tabName":"Details",
+        "tabSlug":"general",
+        "actionToCheck":"readUser",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "userAddress":"Address",
+              "userCity":"City",
+              "userCountry":"Country",
+              "userZip":"Zip Code",
+              "userPhone":"Phone",
+              "createdUser":"Created By"
+            },
+            "multipleRows":false
+          }
+        ]
+      },
+      {
+        "tabName":"Customer Admin",
+        "tabSlug":"customersCustom",
+        "actionToCheck":"readCustomer",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "customerName":"Customer Name"
+            },
+            "role":"CA",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagCa", "buttonName": "Tag/Untag CA"}],
+            "service": true
+          }
+        ]
+      },
+      {
+        "tabName":"Account Admin",
+        "tabSlug":"accounts",
+        "actionToCheck":"readAccount",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "accountName":"Account Name"
+            },
+            "role":"AA",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagAaRole", "buttonName": "Tag AA"}],
+            "service": true
+          }
+        ]
+      },
+      {
+        "tabName":"BU Admin",
+        "tabSlug":"bus",
+        "actionToCheck":"readBu",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "buName":"BU Name"
+            },
+            "role":"BUA",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagBua", "buttonName": "Tag/Untag BUA"}],
+            "service": true
+          }
+        ]
+      },
+      {
+        "tabName":"Project Admin/User",
+        "tabSlug":"projects",
+        "actionToCheck":"readProject",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "projectName":"Project Admin"
+            },
+            "role":"PA",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagPa", "buttonName": "Tag/Untag PA"}],
+            "service": true
+          },
+          {
+            "name":"",
+            "columns":{
+              "projectName":"Project User"
+            },
+            "role":"PU",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagPu", "buttonName": "Tag/Untag PU"}],
+            "service": true
+          }
+        ]
+      }
+    ]
+  },
+  "bus":{
+    "table":{
+      "buName":"BU Name",
+      "buDescription":"BU Description",
+      "isActive":"Is Active ?",
+      "createdUser":"Created By"
+    },
+    "tab":[
+      {
+        "tabName":"BU Admins",
+        "tabSlug":"buAdmins",
+        "actionToCheck":"readBu",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "fname":"First Name",
+              "sname":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"BUA",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagBua", "buttonName": "Tag/Untag BU"}]
+          }
+        ]
+      },
+      {
+        "tabName":"Budgets",
+        "tabSlug":"buBudgets",
+        "actionToCheck":"readBu",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{"budgetName":"Budget Name","value": "Budget Value","type": "Type","financialYear": "Financial Year:","isActive": "is Active","period":"Budget Period","start":"Start Date","end":"End Date"},
+            "role":"FA",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagBua", "buttonName": "Tag/Untag BU"}]
+          }
+        ]
+      },
+      {
+        "tabName":"Projects",
+        "tabSlug":"projectsUnderBu",
+        "actionToCheck":"readProject",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "projectName":"Project Name"
+            },
+            "multipleRows":true
+          }
+        ]
+      }
+    ]
+  },
+  "accounts":{
+    "table":{
+      "accountName":"Account Name",
+      "cspName":"CSP Name",
+      "isActive":"Is Active ?",
+      "createdUser":"Created By"
+    },
+    "tab":[
+      {
+        "tabName":"Details",
+        "tabSlug":"general",
+        "actionToCheck":"readAccount",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "accountDescription":"Account Description",
+              "accountAPIkey":"API Key",
+              "accountSecretkey":"Secret Key",
+              "accountId":"Account ID"
+            },
+            "multipleRows":false
+          }
+        ]
+      },
+      {
+        "tabName":"Account Admins",
+        "tabSlug":"accountAdminsUnderAccount",
+        "actionToCheck":"readAccount",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "fname":"First Name",
+              "sname":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"AA",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagAa", "buttonName": "Tag/Untag AA"}]
+          }
+        ]
+      },
+      {
+        "tabName":"Projects",
+        "tabSlug":"projectsUnderAccount",
+        "actionToCheck":"readProject",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "projectName":"Project Name"
+            },
+            "multipleRows":true
+          }
+        ]
+      }
+    ]
+  },
+  "budget":{
+    "table":{"budgetName":"Name","projects" : "projects","value": "Value","type": "Type"},
+    "tab":[
+      {
+        "tabName":"Details",
+        "tabSlug":"general",
+        "isTable": false,
+        "actionToCheck":"readAccount",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{"period":"Budget Period","start":"Start Date","end":"End Date"},
+            "multipleRows":false
+          }
+        ]
+      },
+      {
+        "tabName":"BU",
+        "tabSlug":"bus",
+        "isTable": true,
+        "actionToCheck":"readAccount",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{"buName": "BU Name"},
+            "role":"FA",
+            "multipleRows":true,
+            "buttonAction":{"buttonAction": "tagBudgetBu", "buttonName": "Tag/Untag BU"}
+          }
+        ]
+      },
+      {
+        "tabName":"Projects",
+        "tabSlug":"projectsUnderBudget",
+        "isTable": true,
+        "actionToCheck":"readProject",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{"projectName": "Project Name"},
+            "role":"FA",
+            "multipleRows":true,
+            "buttonAction":{"buttonAction": "tagBudgetProject", "buttonName": "Tag/Untag Project"}
+          }
+        ]
+      }
+    ]
+  },
+  "projects":{
+    "table":{
+      "projectName":"Project Name",
+      "buName":"BU Name",
+      "projectDescription":"Project Description",
+      "projectStartdate":"Start Date",
+      "projectEnddate":"End Date",
+      "isActive":"Is Active ?",
+      "projectBudget":"Budget",
+      "createdUser":"Created By"
+    },
+    "tab":[
+      {
+        "tabName":"Accounts",
+        "tabSlug":"accountsUnderProject",
+        "actionToCheck":"readAccount",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "accountName":"Account Name",
+              "accountDescription":"Account Description",
+              "isActive":"Is Active ?",
+              "createdUser":"Created By"
+            },
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Business Units",
+        "tabSlug":"busUnderProject",
+        "actionToCheck":"readBu",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "buName":"BU Name",
+              "buDescription":"BU Description",
+              "isActive":"Is Active ?",
+              "createdUser":"Created By"
+            },
+            "multipleRows":true
+          }
+        ]
+      },
+      {
+        "tabName":"Project Admins",
+        "tabSlug":"projectAdmins",
+        "actionToCheck":"readProject",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "fname":"First Name",
+              "sname":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"PA",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagPa", "buttonName": "Tag/Untag PA"}]
+          }
+        ]
+      },
+      {
+        "tabName":"Project Users",
+        "tabSlug":"projectUsers",
+        "actionToCheck":"readProject",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "uid":"User Id",
+              "fname":"First Name",
+              "sname":"Last Name",
+              "isActive":"Is Active ?",
+              "isLocal":"Is Local ?",
+              "createdUser":"Created By"
+            },
+            "role":"PU",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagPu", "buttonName": "Tag/Untag PU"}]
+          }
+        ]
+      },
+      {
+        "tabName":"Budgets",
+        "tabSlug":"buBudgets",
+        "actionToCheck":"readBu",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{"budgetName":"Budget Name","value": "Budget Value","type": "Type","financialYear": "Financial Year:","isActive": "is Active","period":"Budget Period","start":"Start Date","end":"End Date"},
+            "role":"BUA",
+            "multipleRows":true,
+            "buttonAction":[{"buttonAction": "tagBua", "buttonName": "Tag/Untag BU"}]
+          }
+        ]
+      }
+    ]
+  },
+  "csps":{
+    "table":{
+      "cspName":"CSP Name",
+      "createdUser":"Created By",
+      "nativeCsp":"Native CSP",
+      "isActive": "Is Active?"
+    },
+    "tab":[
+      {
+        "tabName":"Regions",
+        "tabSlug":"regions",
+        "actionToCheck":"readCsp",
+        "tabData":[
+          {
+            "name":"",
+            "columns":{
+              "name":"Region Name",
+              "nativeRegion":"Native Region"
+            },
+            "role":"CA",
+            "multipleRows":true,
+            "buttonAction":[]
+          }
+        ]
+      }
+    ]
+  },
+  "displayRegions":{
+    "table":{
+      "regionName":"Region Name",
+      "cspName":"CSP Name",
+      "regionName":"Region Name",
+      "isActive":"Is active?",
+      "createdUser":"Created By"
+    },
+    "tab":[
+
+    ]
+  },
+  "myRequests":{
+    "table":{
+      "requestId":"Req No",
+      "createdby":"Requestor",
+      "status":"Status",
+      "timestamp":"Req Date",
+      "accountName":"Account Name",
+      "projectName":"Project Name"
+    },
+    "tab":[
+
+    ]
+  },
+  "forApprovals":{
+    "table":{
+      "requestId":"Req No",
+      "createdby":"Requestor",
+      "timestamp":"Req Date",
+      "accountName":"Account Name",
+      "projectName":"Project Name"
+    },
+    "tab":[
+
+    ]
+  },
+  "myResources":{
+        "table":{
+        },
+        "tab":{
+            "details":"Details",
+            "tags":"Tags",
+            "network":"Network",
+            "storage":"Storage",
+            "virtualMachine":"Virtual Machine",
+            "securityPolicy":"Security Policy",
+            "ipPermissions":"IP Permissions",
+            "tags":"Tags",
+            "inBound":"inBound",
+            "outBound":"outBound",
+            "defaultInBound":"defaultOutBound",
+            "defaultOutBound":"defaultOutBound",
+            "osDisk":"OS Disks",
+            "dataDisks":"Data Disks",
+            "blockDeviceMapping":"Block Device Mapping",
+            "attachments":"Attachments",
+            "adminContact":"Admin Contact",
+            "registrantContact":"Registrant Contact",
+            "techContact":"Tech Contact",
+            "config":"Config",
+            "recordSets":"Record Sets",
+            "listeners":"Listeners",
+            "healthCheck":"Health Check",
+            "instanceHealthStatus":"Instance Health Status",
+            "ipPermissions":"IP Permissions",
+            "attachedVms":"Attached VMs",
+            "objects":"Objects"            
+       }
+    }
+}

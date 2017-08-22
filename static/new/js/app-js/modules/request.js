@@ -1,0 +1,11 @@
+angular.module('swire').config(function($stateProvider,$httpProvider,$locationProvider){
+    $stateProvider.state('myRequestListView',{
+      url:'/:customerName/myRequests',
+      templateUrl:'/static/new/partials/requestListView.html',
+      controller:'MyRequestListController'
+    }).state('requestListView',{
+      url:'/:customerName/forApprovals',
+      templateUrl:'/static/new/partials/requestListView.html',
+      controller:'RequestListController'
+    })
+})

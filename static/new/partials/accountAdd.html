@@ -1,0 +1,138 @@
+<div ng-include="'static/new/partials/sidebar.html'"></div>
+
+            <!-- page content -->
+            <div class="right_col pdnlft0" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h2 class="pdntp10"><a ui-sref="dashboard">{{customerName}}</a> | <a ui-sref="listView({customerName: customerName, service: service})">{{translate(service)}}</a> | {{serviceName || 'New' }}</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <!-- <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+              <li role="presentation" class="active tabssma"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">{{translate('details')}}</a>
+              </li>
+            </ul> -->
+
+
+            <div id="myTabContent" class="tab-content">
+              <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                <div class="clearfix"></div>
+
+                <form class="form-horizontal form-label-left pdn12" ng-submit="save();">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_content pdn-top15">
+                      <div class="form-group col-sm-6 col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>Account Name</label>
+                          <input type="text" name="accountName" ng-model="selectedServiceData.accountName" required class="form-control" placeholder="Account Name" ng-readonly="editFlag">
+                        </div>
+                        <div class="form-group">
+                          <label>Account Description</label>
+                          <input type="text" name="accountDescription" ng-model="selectedServiceData.accountDescription" required maxlength="50" class="form-control" 
+                          placeholder="Account Description">
+                        </div>
+                        <div class="form-group">
+                          <label>Customer Name</label>
+                          <input type="text" name="customerName" required class="form-control" ng-model="selectedServiceData.customerName" placeholder="Customer Name" readonly>
+                        </div>
+                        <!-- change to display CSP (currently CSP) -->
+                        <!-- <div class="form-group">
+                          <label>CSP</label>
+                          <select name="csp" required class="form-control" ng-model="selectedServiceData.csp" placeholder="CSP" data-service="csps">
+                              <option value="" selected disabled>CSP</option>
+                              <option ng-repeat="csp in csps" value="{{csp.value}}" ng-selected="csp.value == selectedServiceData.csp">{{csp.name}}</option>
+                          </select>
+                        </div> -->
+                        <div class="form-group">
+                          <label>CSP</label>
+                          <select name="csp" required class="form-control" ng-model="selectedServiceData.cspName" placeholder="CSP" data-service="csps" ng-change="setNativeCSPAccount(selectedServiceData.cspName)">
+                              <option value="" selected disabled>CSP</option>
+                              <option ng-repeat="csp in csps" value="{{csp.value}}" ng-selected="csp.value==selectedServiceData.csp">{{csp.name}}</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Native CSP</label>
+                          <input type="text" name="nativeCsp" ng-model="selectedServiceData.nativeCsp" required class="form-control" placeholder="Native CSP" readonly="readonly" ng-readonly="true">
+                        </div>
+                        <div class="form-group">
+                          <label>Auto Approval</label><br>
+                          <input type="radio" name="autoApproval" value="yes" ng-model="selectedServiceData.autoApproval" required>Yes
+                          <input type="radio" name="autoApproval" value="no" ng-model="selectedServiceData.autoApproval" ng-checked="true">No
+                        </div>
+                        <div class="form-group">
+                          <label>Mark Up / Down ( % )</label><br>
+                          <input type="radio" ng-model="selectedServiceData.markType" name="markType" ng-init="markType= 'UP'" value="UP" ng-checked="true" required> Up
+                          <input type="radio" ng-model="selectedServiceData.markType" name="markType" value="DOWN" >Down
+                        </div>
+                        <div class="form-group">
+                          <input type="number" step=0.01 name="markValue" ng-init="selectedServiceData.markValue = 0" ng-model="selectedServiceData.markValue" class="form-control" placeholder="Mark Up / Down in %" >
+                        </div>
+                      </div>
+                      <div class="form-group col-sm-6 col-md-6 col-xs-12">
+                        <div class="form-group" ng-show="selectedServiceData.nativeCsp.toLowerCase() == 'aws'" ng-disabled="selectedServiceData.nativeCsp != 'aws'">
+                          <label>Account ID</label>
+                          <input type="text" name="accountId" ng-model="selectedServiceData.accountId" ng-required="selectedServiceData.nativeCsp.toLowerCase() == 'aws'" maxlength="50" class="form-control" 
+                          placeholder="Account ID">
+                        </div>
+                        <div class="form-group" ng-show="selectedServiceData.nativeCsp.toLowerCase() == 'aws'" ng-disabled="selectedServiceData.nativeCsp.toLowerCase() != 'aws'">
+                          <label>Access Key Id</label>
+                          <input type="text" name="accessKeyId" ng-required="selectedServiceData.nativeCsp.toLowerCase() == 'aws'" class="form-control" ng-model="selectedServiceData.accessKeyId" placeholder="Access Key Id">
+                        </div>
+                        <div class="form-group" ng-show="selectedServiceData.nativeCsp.toLowerCase() == 'aws'" ng-disabled="selectedServiceData.nativeCsp.toLowerCase() != 'aws'">
+                          <label>Secret Key</label>
+                          <input type="text" name="accountSecretkey" ng-required="selectedServiceData.nativeCsp.toLowerCase() == 'aws'" class="form-control" ng-model="selectedServiceData.accountSecretkey" placeholder="Secret Key">
+                        </div>
+                        <div class="form-group" ng-show="selectedServiceData.nativeCsp.toLowerCase() == 'aws'" ng-disabled="selectedServiceData.nativeCsp.toLowerCase() != 'aws'">
+                          <label>Report Bucket</label>
+                          <input type="text" name="reportBucket" ng-required="selectedServiceData.nativeCsp.toLowerCase() == 'aws'" class="form-control" ng-model="selectedServiceData.reportBucket" placeholder="Report Bucket">
+                        </div>
+                        <div class="form-group" ng-show="selectedServiceData.nativeCsp.toLowerCase() == 'aws'" ng-disabled="selectedServiceData.nativeCsp.toLowerCase() != 'aws'">
+                          <label>Report Path</label>
+                          <input type="text" name="reportPath" ng-required="selectedServiceData.nativeCsp.toLowerCase() == 'aws'" class="form-control" ng-model="selectedServiceData.reportPath" placeholder="Report Path">
+                        </div>
+                        <div class="form-group" ng-show="selectedServiceData.nativeCsp.toLowerCase() == 'azure'" ng-disabled="selectedServiceData.nativeCsp.toLowerCase() != 'azure'">
+                          <label>Subscription Id</label>
+                          <input type="text" name="subscriptionId" class="form-control" ng-required="selectedServiceData.nativeCsp.toLowerCase() == 'azure'" ng-model="selectedServiceData.subscriptionId" placeholder="Subscription Id">
+                        </div>
+                        <div class="form-group" ng-show="selectedServiceData.nativeCsp.toLowerCase() == 'azure'" ng-disabled="selectedServiceData.nativeCsp.toLowerCase() != 'azure'">
+                          <label>Client Id</label>
+                          <input type="text" name="clientId" class="form-control" ng-required="selectedServiceData.nativeCsp.toLowerCase() == 'azure'" ng-model="selectedServiceData.clientId" placeholder="Client Id">
+                        </div>
+                        <div class="form-group" ng-show="selectedServiceData.nativeCsp.toLowerCase() == 'azure'" ng-disabled="selectedServiceData.nativeCsp.toLowerCase() != 'azure'">
+                          <label>Client Secret</label>
+                          <input type="text" name="clientSecret" ng-required="selectedServiceData.nativeCsp.toLowerCase() == 'azure'" class="form-control" ng-model="selectedServiceData.clientSecret" placeholder="Client Secret">
+                        </div>
+                        <div class="form-group" ng-show="selectedServiceData.nativeCsp.toLowerCase() == 'azure'" ng-disabled="selectedServiceData.nativeCsp.toLowerCase() != 'azure'">
+                          <label>Tenant Id</label>
+                          <input type="text" name="tenantId" ng-required="selectedServiceData.nativeCsp.toLowerCase() == 'azure'" class="form-control" ng-model="selectedServiceData.tenantId" placeholder="Tenant Id">
+                        </div>
+                        <div class="form-group" ng-show="selectedServiceData.nativeCsp.toLowerCase() == 'azure'" ng-disabled="selectedServiceData.nativeCsp.toLowerCase() != 'azure'">
+                          <label>Publish Setting File</label>
+                          <input type="file" name="publishSettingFile" class="form-control" ng-model="publishSettingFile" placeholder="Publish Setting File" base-sixty-four-input ng-required="(selectedServiceData.nativeCsp.toLowerCase() == 'azure') && !selectedServiceData.publishSettingFileName" ng-change="setPublishFile()" accept=".publishsettings">
+                          <p ng-if="selectedServiceData.publishSettingFileName">Current file: {{selectedServiceData.publishSettingFileName}}</p>
+                        </div>
+                        <div class="form-group">
+                          <label>Account Status Active</label><br>
+                          <input type="radio" name="isActive" value="yes" ng-model="selectedServiceData.isActive" checked required>Yes
+                          <input type="radio" name="isActive" value="no" ng-model="selectedServiceData.isActive">No
+                        </div>
+                        <button class="btn btn-success pull-right form-submit" type="submit">Submit</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+                </div>
+            </div>

@@ -1,0 +1,23 @@
+angular.module('swire').config(function($stateProvider,$httpProvider,$locationProvider){
+    $stateProvider.state('displayCspCardView',{
+      url:'/displayCsp',
+      templateUrl:'/static/new/partials/displayCspCardView.html',
+      controller:'DisplayCspCardController'
+    }).state('displayCspListView',{
+      url:'/displayCsp/list',
+      templateUrl:'/static/new/partials/displayCspListView.html',
+      controller:'DisplayCspListController'
+    }).state('displayCspDetails',{
+      url:'/displayCsp/:name',
+      templateUrl:'/static/new/partials/displayCspDetails.html',
+      controller:'DisplayCspDetailsController'
+    }).state('displayCspAdd',{
+      url:'/displayCsp/add',
+      templateUrl:'/static/new/partials/addDisplayCsp.html',
+      controller:'DisplayCspAddController'
+    }).state('displayCspEdit',{
+      url:'/displayCsp/edit/:name',
+      templateUrl:'/static/new/partials/addDisplayCsp.html',
+      controller:'DisplayCspEditController'
+    })
+})

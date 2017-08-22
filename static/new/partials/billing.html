@@ -1,0 +1,166 @@
+<div ng-include="'static/new/partials/sidebar.html'"></div>
+<div class="row right_col pdnlft0 billing-page" role="main">
+    <div class="col-lg-12 page-title">
+        <div class="title_left col-md-6">
+            <h2 class="pdntp10"><a>{{customerName}}</a> | <a ui-sref="billing({customerName: customerSideBar.name})">{{translate(resourceName)}}</a></h2>
+        </div>
+    </div>
+    <div class="col-lg-11 details-btm-section list-view-page">
+        <div class="col-lg-12 compute-new-instance-forms-page no-padding" role="tabpanel" data-example-id="togglable-tabs" >
+
+            <div class="x_content text-center" ng-if="!initComplete"><img src="static/new/images/0.gif" width="200" height="200"></img></div>
+            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 no-padding" ng-if="initComplete">
+                <label class="section-title">Usage Summary</label>
+                <div class="charts-container">
+
+                    <div class="chart-wrapper col-lg-6">
+                        <div class="col-lg-6 no-padding">
+                            <!-- <label>Provider Overview</label> -->
+                        </div>
+                        <div class="col-lg-6 no-padding">
+                            <form class="form-horizontal" novalidate>
+                                <div class="form-group active-input">
+                                    <select class="form-control" ng-model="billing.commonFilter1" ng-change="changeFilter1()">
+                                    <option ng-repeat="resourceName in filtersList" value="{{resourceName}}">{{resourceName}}</option>                   
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                            <canvas id="line" class="chart chart-line" chart-data="finalBilling"
+                            chart-labels="billingKeys">
+                            </canvas>
+                    </div>
+
+                    <div class="chart-wrapper col-lg-6">
+                        <div class="col-lg-6 no-padding">
+                            <!-- <label>Resources Overview</label> -->
+                        </div>
+                        <div class="col-lg-6 no-padding">
+                            <form class="form-horizontal" novalidate>
+                                <div class="form-group active-input">
+                                <select class="form-control" ng-model="billing.commonFilter2" ng-change="changeFilter2()">
+                                    <option ng-repeat="resourceName in filtersList" value="{{resourceName}}">{{resourceName}}</option>
+                                </select>
+                                </div>
+                            </form>
+                        </div>
+                    <canvas id="radar" class="chart chart-radar" chart-data="finalBilling1"  chart-labels="billingKeys1"></canvas> 
+                    </div>
+
+                    <div class="chart-wrapper col-lg-6">
+                        <div class="col-lg-6 no-padding">
+                            <!-- <label>Region Overview</label> -->
+                        </div>
+                        <div class="col-lg-6 no-padding">
+                            <form class="form-horizontal" novalidate>
+                                <div class="form-group active-input">
+                                    <select class="form-control" ng-model="billing.commonFilter3" ng-change="changeFilter3()">
+                                    <option ng-repeat="resourceName in filtersList" value="{{resourceName}}">{{resourceName}}</option>
+                                </select>
+                                </div>
+                            </form>
+                        </div>
+                    <canvas id="doughnut" class="chart chart-doughnut" chart-data="finalBilling2" chart-labels="billingKeys2">
+                    </canvas> 
+                    </div>
+
+                    <div class="chart-wrapper col-lg-6">
+                        <div class="col-lg-6 no-padding">
+                            <!-- <label>Account Overview</label> -->
+                        </div>
+                        <div class="col-lg-6 no-padding">
+                            <form class="form-horizontal" novalidate>
+                                <div class="form-group active-input">
+                                    <select class="form-control" ng-model="billing.commonFilter4" ng-change="changeFilter4()">
+                                    <option ng-repeat="resourceName in filtersList" value="{{resourceName}}">{{resourceName}}</option>
+                                </select>    
+                                </div>
+                            </form>
+                        </div>
+                    <canvas id="bar" class="chart chart-bar" chart-data="finalBilling3" chart-labels="billingKeys3">chart-series="series"</canvas> 
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- {{billingData}} -->
+    <div class="data-filter-aside col-xs-1 col-sm-1 col-md-1 col-lg-1 no-padding">
+        <label class="section-title">Data filters</label>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Period</label>
+                <select class="form-control" ng-model="billing.period" ng-change="periodChange()">
+                    <option value="current">Current Month</option>
+                    <option value="3m">Last 3 months</option>
+                    <option value="6m">Last 6 months</option>
+                    <option value="12m" >Last 12 months</option>
+                    <!-- <option value="cus">Custom</option> -->
+                </select>
+            </div>
+        </form>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Provider</label>
+                <select class="form-control" ng-model="billing.csp" ng-change="providerChange()">
+                    <option value="all">All</option>
+                    <option ng-repeat="csp in billing.csps" value="{{csp.name}}">{{csp.name}}</option>                   
+                </select>
+            </div>
+        </form>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Region</label>
+                <select class="form-control" ng-model="billing.region">
+                    <option value="all">All</option>
+                    <option ng-repeat="region in billing.regions[0]" value="region">{{region}}</option>                   
+                </select>
+            </div>
+        </form>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Account</label>
+                 <select class="form-control" ng-model="billing.account" ng-change="accountChange()">
+                    <option value="all">All</option>
+                    <option ng-repeat="account in billing.accounts" value="{{account.name}}">{{account.name}}</option>                   
+                </select>
+            </div>
+        </form>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Business Unit</label>
+                 <select class="form-control" ng-model="billing.bu">
+                    <option value="all">All</option>
+                    <option ng-repeat="bu in billing.bus" value="bu">{{bu.name}}</option>                   
+                </select>
+            </div>
+        </form>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Project</label>
+                 <select class="form-control" ng-model="billing.project" ng-change="accountChange()">
+                    <option value="all">All</option>
+                    <option ng-repeat="project in billing.projects" value="project">{{project}}</option>                   
+                </select>
+            </div>
+        </form>
+        <form class="form-horizontal no-padding" novalidate>
+            <div class="form-group active-input">
+                <label>Resource Type</label>
+                 <select class="form-control" ng-model="billing.resourceName">
+                    <option value="all">All</option>
+                    <option ng-repeat="resourceName in billing.resourceNames" value="resourceName">{{resourceName}}</option>                   
+                </select>
+            </div>
+        </form>
+        <!-- <ul>
+            <li ng-repeat="region in billing.regions" value="region">{{region}}</li>
+        </ul> -->
+        <span>These filters apply for all the four charts</span>
+        <div class="form-group active-input">
+                <!-- <label>Resource Type</label> -->
+                <button class="btn btn-primary btn-custom" ng-click="refreshBilling()">Refresh</button>
+            </div>
+    </div>
+</div>

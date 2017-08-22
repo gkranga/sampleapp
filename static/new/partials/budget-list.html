@@ -1,0 +1,102 @@
+<div ng-include="'static/new/partials/sidebar.html'"></div>
+</div>
+</div>
+<!-- page content -->
+
+<div class="right_col pdnlft0" role="main">
+    <div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="x_panel pdntop0">
+                    <div class="x_title">
+                        <h2 class="pdntp10"><a ui-sref="budget-list({customerName: customerName})">{{customerName}}/ {{translate('Budget')}}</a> </h2>
+                        <ul class="nav navbar-right panel_toolbox minwidthauto seachtab">
+                            <li class="">
+                                <a title="{{translate('add')}}" ui-sref="budget({customerName: customerName})" role="button" ><button class="btn btn-primary btn-custom">Create</button></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="listview-table-wrapper">
+                        <table class="table table-responsive" >
+                            <thead>
+                            <tr>
+                                <th style="cursor:pointer" data-ng-repeat="(thkey,keys) in table track by $index"   ng-init="name = keys"
+                                >{{objectTransform(name)}}
+                                    <!--<span class="table-sort-icon fa fa-chevron-down"></span>-->
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="(rowKey,rowData) in customerBudgets track by $index"  ng-click="selectRowData(rowKey)" ng-class="{'selected':selectedRowId === rowKey}">
+                                <td ng-repeat="(key,value) in table" >
+                                    {{objectTransform(rowData[key])| limitTo: 80 }}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <!--<pagination total-items="totalItems" ng-model="currentPage" ng-click="pageChange(currentPage)" class="pagination-sm" items-per-page="itemsPerPage"></pagination>-->
+<!-- 
+            <div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="details-btm-section resource-tabs">
+                    <div class="x_panel" >
+                        <div class="" role="tabpanel" data-example-id="togglable-tabs" >
+                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist" >
+                                <li role="presentation" ng-repeat="(key,tab) in tabs" ng-style="{'font-weight': isTabActive(tab.tabName)}">
+                                    <a role="tab" data-toggle="tab" aria-expanded="true" ng-click="tabDetails(tab,tab.tabName)">  
+                                        <button class="btn btn-default list-view-tabs" ng-if="tab.tabName">{{tab.tabName}}</button>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <div class="tab-content" >
+
+                                <div  style="margin-bottom: 50px;">
+
+                            
+                                    <div class="x_tabs"  ng-show="tabInitComplete" ng-include="'static/new/partials/tabs/budget_'+tabFormat+'.html'"></div>
+                                </div>
+                          
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ -->
+
+ <div  style="color: #ededed"> {{keyMapper[service]['tab'][0].tabName}}  </div>
+ 
+            <div class="col-lg-12 list-view-page">
+    <div class="x_panel" >
+      <div class="" role="tabpanel" data-example-id="togglable-tabs" >
+        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist" >
+          <li class="list-view" role="presentation" ng-repeat="key in keyMapper[service]['tab'] | keys" ng-init="tab = keyMapper[service]['tab'][key]">
+          <a role="tab" data-toggle="tab" aria-expanded="true" ng-click="tabDetails(tab,tab.tabName)" >
+            <button class="btn btn-default list-view-tabs" ng-style="{'font-weight': isTabActive(tab.tabName)}">{{tab.tabName}}</button></a>
+          </li>
+          <li>
+            
+          </li>
+        </ul>
+<div class="tab-content" >
+<ul class="nav navbar-right panel_toolbox minwidthauto editsave_btns" >
+            <li class="mgn_ryt8">
+              <a title="{{translate('edit')}}" href="javascript:void(0);" ui-sref="budgetEdit({customerName: customerName,budgetName:customerBudgets[selectedRowId].budgetName})" role="button" >
+                <button class="btn untag-btn btn-custom">Edit</button>
+              </a>
+            </li>
+          </ul>
+    <div  style="margin-bottom: 50px;">
+        <div class="x_tabs"  ng-show="tabInitComplete" ng-include="'static/new/partials/tabs/budget_'+tabFormat+'.html'"></div>
+    </div>
+
+</div>
+    </div>
+  </div>
+        </div>
+    </div>
+</div>

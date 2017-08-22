@@ -1,0 +1,12 @@
+<table class="table"  ng-init="loadBudgetBus(selectedServiceData[serviceSingularName])">
+    <thead>
+    <tr>
+        <th ng-repeat="columnKey in table.columns | keys" ng-init="name = table.columns[columnKey]">{{objectTransform(name)}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="user in usersRelatedToService track by $index">
+        <td ng-repeat="columnKey in table.columns | keys">{{user[columnKey]}}</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,44 @@
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="dialog" role="dialog" tabindex="-1" id="profile" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Profile</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center col-md-12">
+          <img class="img img-responsive img-square center-block profilePic" width="200px" height="200px" src="/static/uploads/<%= user.uid %>" onerror="if (this.src != '/static/img/avatar-mini.jpg') this.src = '/static/img/avatar-mini.jpg';" alt="">
+          <form id="profile_img_change" onsubmit="changeProfileImg($(this));">
+            <a href="#" onclick="$('#new_avatar').click();">Change Pic</a>
+            <input type="file" accept=".jpg,.png" name="avatar" id="new_avatar" onchange="$(this).submit();" class="hidden">
+          </form>
+        </div>
+        <form action="/api/updateUser" method="post">
+          <label for="uid">UID</label>
+          <input type="email" name="uid" placeholder="User Email" class="form-control" readonly value="<%= user.uid %>" required>
+          <label for="fname">First Name</label>
+          <input type="text" name="fname" placeholder="First Name" maxlength="20" class="form-control" value="<%= user.fname %>" required>
+          <label for="sname">Last Name</label>
+          <input type="text" name="sname" placeholder="Last Name" maxlength="20" class="form-control" value="<%= user.sname %>" required>
+          <label for="userAddress">Address</label>
+          <input type="text" name="userAddress" placeholder="Address" maxlength="50" class="form-control" value="<%= user.userAddress %>" required>
+          <label for="userCity">City</label>
+          <input type="text" name="userCity" placeholder="City" pattern="[A-Za-z ]{20}" class="form-control" value="<%= user.userCity %>" required>
+          <label for="userCountry">Country</label>
+          <input type="text" name="userCountry" placeholder="Country" class="form-control" pattern="[A-Za-z ]{20}" required value="<%= user.userCountry %>">
+          <label for="userZip">Zip Code</label>
+          <input type="number" name="userZip" placeholder="Zip Code" class="form-control" max="9999999999" value="<%= user.userZip %>" required>
+          <label for="userPhone">Phone</label>
+          <input type="number" name="userPhone" placeholder="Phone" class="form-control" required max="999999999999999" value="<%= user.userPhone %>">
+          <% if (user['isSwa'] != 'yes') { %>
+          <label for="customerName">Customer Name</label>
+          <input type="text" name="customerName" required class="form-control" placeholder="Customer Name" readonly="" value="<%= user.customerName %>">
+          <% } %>
+          <button class="btn btn-success pull-right form-submit" type="button">Submit</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal -->

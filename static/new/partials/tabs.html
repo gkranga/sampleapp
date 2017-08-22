@@ -1,0 +1,30 @@
+<div class="details-btm-section list-view-page">
+    <div class="x_panel" >
+      <div class="" role="tabpanel" data-example-id="togglable-tabs" >
+        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist" >
+          <li class="list-view" role="presentation" ng-repeat="key in keyMapper[service]['tab'] | keys" ng-init="tab = keyMapper[service]['tab'][key]">
+          <a role="tab" data-toggle="tab" aria-expanded="true" ng-click="tabDetails(tab,tab.tabName)" ng-if="permissions.all.indexOf(tab.actionToCheck) > -1" ng-hide="service == 'users' && tab.tabSlug == 'customersCustom' && isSwa">
+            <button class="btn btn-default list-view-tabs" ng-click="tabDetails(tab)" ng-style="{'font-weight': isTabActive(tab.tabName)}">{{tab.tabName}}</button></a>
+          </li>
+          <li>
+            
+          </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+          <ul class="nav navbar-right panel_toolbox minwidthauto editsave_btns" ng-if="permissions.update">
+            <li class="mgn_ryt8">
+              <a title="{{translate('edit')}}" href="javascript:void(0);" ui-sref="edit({customerName: customerName, service:service, serviceName: selectedServiceData[serviceSingularName]})" ng-hide="(service == 'csps' && selectedServiceData['isEditable'] == 'no')" role="button" >
+                <button class="btn untag-btn btn-custom">Edit</button>
+              </a>
+            </li>
+          </ul>
+          <div ng-repeat="table in tabFormat.tabData" style="margin-bottom: 50px;">
+            <caption style="font-weight:bold" ng-if="table.name" >{{table.name}}</caption>
+            <!-- load table -->
+            <div class="x_tabs" ng-show="tabInitComplete" ng-include="'static/new/partials/tabs/'+tabFormat.tabSlug+'.html'"></div>
+          </div>
+          <div class="x_content text-center" ng-hide="tabInitComplete"><img src="static/new/images/0.gif" width="200" height="200">
+        </div>
+      </div>
+    </div>
+  </div>
